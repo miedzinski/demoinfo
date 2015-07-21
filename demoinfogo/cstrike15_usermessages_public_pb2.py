@@ -5,18 +5,44 @@ from google.protobuf.internal import enum_type_wrapper
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
+import sys
+if sys.version_info >= (3,):
+  #some constants that are python2 only
+  unicode = str
+  long = int
+  range = range
+  unichr = chr
+  def b(s):
+    return s.encode("latin-1")
+  def u(s):
+    return s
+else:
+  #some constants that are python2 only
+  range = xrange
+  unicode = unicode
+  long = long
+  unichr = unichr
+  def b(s):
+    return s
+  # Workaround for standalone backslash
+  def u(s):
+    return unicode(s.replace(r'\\', r'\\\\'), "unicode_escape")
+
 from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 
 import google.protobuf.descriptor_pb2
-import netmessages_public_pb2
+try:
+    from . import netmessages_public_pb2
+except ImportError: 
+    import netmessages_public_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='cstrike15_usermessages_public.proto',
   package='',
-  serialized_pb='\n#cstrike15_usermessages_public.proto\x1a google/protobuf/descriptor.proto\x1a\x18netmessages_public.proto\"\x82\x01\n\x12\x43\x43SUsrMsg_VGUIMenu\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04show\x18\x02 \x01(\x08\x12+\n\x07subkeys\x18\x03 \x03(\x0b\x32\x1a.CCSUsrMsg_VGUIMenu.Subkey\x1a#\n\x06Subkey\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0b\n\x03str\x18\x02 \x01(\t\"!\n\x10\x43\x43SUsrMsg_Geiger\x12\r\n\x05range\x18\x01 \x01(\x05\" \n\x0f\x43\x43SUsrMsg_Train\x12\r\n\x05train\x18\x01 \x01(\x05\"!\n\x11\x43\x43SUsrMsg_HudText\x12\x0c\n\x04text\x18\x01 \x01(\t\"U\n\x11\x43\x43SUsrMsg_SayText\x12\x0f\n\x07\x65nt_idx\x18\x01 \x01(\x05\x12\x0c\n\x04text\x18\x02 \x01(\t\x12\x0c\n\x04\x63hat\x18\x03 \x01(\x08\x12\x13\n\x0btextallchat\x18\x04 \x01(\x08\"j\n\x12\x43\x43SUsrMsg_SayText2\x12\x0f\n\x07\x65nt_idx\x18\x01 \x01(\x05\x12\x0c\n\x04\x63hat\x18\x02 \x01(\x08\x12\x10\n\x08msg_name\x18\x03 \x01(\t\x12\x0e\n\x06params\x18\x04 \x03(\t\x12\x13\n\x0btextallchat\x18\x05 \x01(\x08\"4\n\x11\x43\x43SUsrMsg_TextMsg\x12\x0f\n\x07msg_dst\x18\x01 \x01(\x05\x12\x0e\n\x06params\x18\x03 \x03(\t\"\xe0\x01\n\x10\x43\x43SUsrMsg_HudMsg\x12\x0f\n\x07\x63hannel\x18\x01 \x01(\x05\x12\x1a\n\x03pos\x18\x02 \x01(\x0b\x32\r.CMsgVector2D\x12\x17\n\x04\x63lr1\x18\x03 \x01(\x0b\x32\t.CMsgRGBA\x12\x17\n\x04\x63lr2\x18\x04 \x01(\x0b\x32\t.CMsgRGBA\x12\x0e\n\x06\x65\x66\x66\x65\x63t\x18\x05 \x01(\x05\x12\x14\n\x0c\x66\x61\x64\x65_in_time\x18\x06 \x01(\x02\x12\x15\n\rfade_out_time\x18\x07 \x01(\x02\x12\x11\n\thold_time\x18\t \x01(\x02\x12\x0f\n\x07\x66x_time\x18\n \x01(\x02\x12\x0c\n\x04text\x18\x0b \x01(\t\"`\n\x0f\x43\x43SUsrMsg_Shake\x12\x0f\n\x07\x63ommand\x18\x01 \x01(\x05\x12\x17\n\x0flocal_amplitude\x18\x02 \x01(\x02\x12\x11\n\tfrequency\x18\x03 \x01(\x02\x12\x10\n\x08\x64uration\x18\x04 \x01(\x02\"\\\n\x0e\x43\x43SUsrMsg_Fade\x12\x10\n\x08\x64uration\x18\x01 \x01(\x05\x12\x11\n\thold_time\x18\x02 \x01(\x05\x12\r\n\x05\x66lags\x18\x03 \x01(\x05\x12\x16\n\x03\x63lr\x18\x04 \x01(\x0b\x32\t.CMsgRGBA\">\n\x10\x43\x43SUsrMsg_Rumble\x12\r\n\x05index\x18\x01 \x01(\x05\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\x05\x12\r\n\x05\x66lags\x18\x03 \x01(\x05\"M\n\x16\x43\x43SUsrMsg_CloseCaption\x12\x0c\n\x04hash\x18\x01 \x01(\r\x12\x10\n\x08\x64uration\x18\x02 \x01(\x05\x12\x13\n\x0b\x66rom_player\x18\x03 \x01(\x08\"S\n\x1c\x43\x43SUsrMsg_CloseCaptionDirect\x12\x0c\n\x04hash\x18\x01 \x01(\r\x12\x10\n\x08\x64uration\x18\x02 \x01(\x05\x12\x13\n\x0b\x66rom_player\x18\x03 \x01(\x08\"*\n\x13\x43\x43SUsrMsg_SendAudio\x12\x13\n\x0bradio_sound\x18\x01 \x01(\t\"]\n\x12\x43\x43SUsrMsg_RawAudio\x12\r\n\x05pitch\x18\x01 \x01(\x05\x12\x0e\n\x06\x65ntidx\x18\x02 \x01(\x05\x12\x10\n\x08\x64uration\x18\x03 \x01(\x02\x12\x16\n\x0evoice_filename\x18\x04 \x01(\t\"\xa1\x01\n\x13\x43\x43SUsrMsg_VoiceMask\x12\x35\n\x0cplayer_masks\x18\x01 \x03(\x0b\x32\x1f.CCSUsrMsg_VoiceMask.PlayerMask\x12\x19\n\x11player_mod_enable\x18\x02 \x01(\x08\x1a\x38\n\nPlayerMask\x12\x17\n\x0fgame_rules_mask\x18\x01 \x01(\x05\x12\x11\n\tban_masks\x18\x02 \x01(\x05\"L\n\x10\x43\x43SUsrMsg_Damage\x12\x0e\n\x06\x61mount\x18\x01 \x01(\x05\x12(\n\x13inflictor_world_pos\x18\x02 \x01(\x0b\x32\x0b.CMsgVector\"X\n\x13\x43\x43SUsrMsg_RadioText\x12\x0f\n\x07msg_dst\x18\x01 \x01(\x05\x12\x0e\n\x06\x63lient\x18\x02 \x01(\x05\x12\x10\n\x08msg_name\x18\x03 \x01(\t\x12\x0e\n\x06params\x18\x04 \x03(\t\"\"\n\x12\x43\x43SUsrMsg_HintText\x12\x0c\n\x04text\x18\x01 \x01(\t\"&\n\x15\x43\x43SUsrMsg_KeyHintText\x12\r\n\x05hints\x18\x01 \x03(\t\"\xd6\x02\n$CCSUsrMsg_ProcessSpottedEntityUpdate\x12\x12\n\nnew_update\x18\x01 \x01(\x08\x12Q\n\x0e\x65ntity_updates\x18\x02 \x03(\x0b\x32\x39.CCSUsrMsg_ProcessSpottedEntityUpdate.SpottedEntityUpdate\x1a\xc6\x01\n\x13SpottedEntityUpdate\x12\x12\n\nentity_idx\x18\x01 \x01(\x05\x12\x10\n\x08\x63lass_id\x18\x02 \x01(\x05\x12\x10\n\x08origin_x\x18\x03 \x01(\x05\x12\x10\n\x08origin_y\x18\x04 \x01(\x05\x12\x10\n\x08origin_z\x18\x05 \x01(\x05\x12\x0f\n\x07\x61ngle_y\x18\x06 \x01(\x05\x12\x0f\n\x07\x64\x65\x66user\x18\x07 \x01(\x08\x12\x1a\n\x12player_has_defuser\x18\x08 \x01(\x08\x12\x15\n\rplayer_has_c4\x18\t \x01(\x08\"9\n\x16\x43\x43SUsrMsg_ReloadEffect\x12\x0e\n\x06\x65ntidx\x18\x01 \x01(\x05\x12\x0f\n\x07\x61\x63tanim\x18\x02 \x01(\x05\"\'\n\x15\x43\x43SUsrMsg_AdjustMoney\x12\x0e\n\x06\x61mount\x18\x01 \x01(\x05\"R\n\x11\x43\x43SUsrMsg_KillCam\x12\x10\n\x08obs_mode\x18\x01 \x01(\x05\x12\x14\n\x0c\x66irst_target\x18\x02 \x01(\x05\x12\x15\n\rsecond_target\x18\x03 \x01(\x05\"\x8b\x01\n\x1a\x43\x43SUsrMsg_DesiredTimescale\x12\x19\n\x11\x64\x65sired_timescale\x18\x01 \x01(\x02\x12\x1d\n\x15\x64uration_realtime_sec\x18\x02 \x01(\x02\x12\x19\n\x11interpolator_type\x18\x03 \x01(\x05\x12\x18\n\x10start_blend_time\x18\x04 \x01(\x02\"3\n\x1a\x43\x43SUsrMsg_CurrentTimescale\x12\x15\n\rcur_timescale\x18\x01 \x01(\x02\"Q\n\x1a\x43\x43SUsrMsg_AchievementEvent\x12\x13\n\x0b\x61\x63hievement\x18\x01 \x01(\x05\x12\r\n\x05\x63ount\x18\x02 \x01(\x05\x12\x0f\n\x07user_id\x18\x03 \x01(\x05\"r\n\x1c\x43\x43SUsrMsg_MatchEndConditions\x12\x11\n\tfraglimit\x18\x01 \x01(\x05\x12\x14\n\x0cmp_maxrounds\x18\x02 \x01(\x05\x12\x13\n\x0bmp_winlimit\x18\x03 \x01(\x05\x12\x14\n\x0cmp_timelimit\x18\x04 \x01(\x05\">\n\x1a\x43\x43SUsrMsg_DisplayInventory\x12\x0f\n\x07\x64isplay\x18\x01 \x01(\x08\x12\x0f\n\x07user_id\x18\x02 \x01(\x05\"8\n\x18\x43\x43SUsrMsg_CallVoteFailed\x12\x0e\n\x06reason\x18\x01 \x01(\x05\x12\x0c\n\x04time\x18\x02 \x01(\x05\"\x9e\x01\n\x13\x43\x43SUsrMsg_VoteStart\x12\x0c\n\x04team\x18\x01 \x01(\x05\x12\x0f\n\x07\x65nt_idx\x18\x02 \x01(\x05\x12\x11\n\tvote_type\x18\x03 \x01(\x05\x12\x10\n\x08\x64isp_str\x18\x04 \x01(\t\x12\x13\n\x0b\x64\x65tails_str\x18\x05 \x01(\t\x12\x16\n\x0eother_team_str\x18\x06 \x01(\t\x12\x16\n\x0eis_yes_no_vote\x18\x07 \x01(\x08\"\\\n\x12\x43\x43SUsrMsg_VotePass\x12\x0c\n\x04team\x18\x01 \x01(\x05\x12\x11\n\tvote_type\x18\x02 \x01(\x05\x12\x10\n\x08\x64isp_str\x18\x03 \x01(\t\x12\x13\n\x0b\x64\x65tails_str\x18\x04 \x01(\t\"4\n\x14\x43\x43SUsrMsg_VoteFailed\x12\x0c\n\x04team\x18\x01 \x01(\x05\x12\x0e\n\x06reason\x18\x02 \x01(\x05\"/\n\x13\x43\x43SUsrMsg_VoteSetup\x12\x18\n\x10potential_issues\x18\x01 \x03(\t\"\x84\x01\n&CCSUsrMsg_SendLastKillerDamageToClient\x12\x16\n\x0enum_hits_given\x18\x01 \x01(\x05\x12\x14\n\x0c\x64\x61mage_given\x18\x02 \x01(\x05\x12\x16\n\x0enum_hits_taken\x18\x03 \x01(\x05\x12\x14\n\x0c\x64\x61mage_taken\x18\x04 \x01(\x05\"$\n\x14\x43\x43SUsrMsg_ItemPickup\x12\x0c\n\x04item\x18\x01 \x01(\t\"Y\n\x12\x43\x43SUsrMsg_ShowMenu\x12\x18\n\x10\x62its_valid_slots\x18\x01 \x01(\x05\x12\x14\n\x0c\x64isplay_time\x18\x02 \x01(\x05\x12\x13\n\x0bmenu_string\x18\x03 \x01(\t\"!\n\x11\x43\x43SUsrMsg_BarTime\x12\x0c\n\x04time\x18\x01 \x01(\t\"\'\n\x14\x43\x43SUsrMsg_AmmoDenied\x12\x0f\n\x07\x61mmoIdx\x18\x01 \x01(\x05\"0\n\x19\x43\x43SUsrMsg_MarkAchievement\x12\x13\n\x0b\x61\x63hievement\x18\x01 \x01(\t\"3\n\x12\x43\x43SUsrMsg_ItemDrop\x12\x0e\n\x06itemid\x18\x01 \x01(\x03\x12\r\n\x05\x64\x65\x61th\x18\x02 \x01(\x08\"+\n\x19\x43\x43SUsrMsg_GlowPropTurnOff\x12\x0e\n\x06\x65ntidx\x18\x01 \x01(\x05\"b\n\x1e\x43\x43SUsrMsg_RoundBackupFilenames\x12\r\n\x05\x63ount\x18\x01 \x01(\x05\x12\r\n\x05index\x18\x02 \x01(\x05\x12\x10\n\x08\x66ilename\x18\x03 \x01(\t\x12\x10\n\x08nicename\x18\x04 \x01(\t\"#\n\x12\x43\x43SUsrMsg_ResetHud\x12\r\n\x05reset\x18\x01 \x01(\x08\"$\n\x13\x43\x43SUsrMsg_GameTitle\x12\r\n\x05\x64ummy\x18\x01 \x01(\x05\"\'\n\x16\x43\x43SUsrMsg_RequestState\x12\r\n\x05\x64ummy\x18\x01 \x01(\x05\",\n\x1b\x43\x43SUsrMsg_StopSpectatorMode\x12\r\n\x05\x64ummy\x18\x01 \x01(\x05\",\n\x1b\x43\x43SUsrMsg_DisconnectToLobby\x12\r\n\x05\x64ummy\x18\x01 \x01(\x05\")\n\x18\x43\x43SUsrMsg_WarmupHasEnded\x12\r\n\x05\x64ummy\x18\x01 \x01(\x05\"%\n\x14\x43\x43SUsrMsg_ClientInfo\x12\r\n\x05\x64ummy\x18\x01 \x01(\x05*\x96\t\n\x16\x45\x43strike15UserMessages\x12\x12\n\x0e\x43S_UM_VGUIMenu\x10\x01\x12\x10\n\x0c\x43S_UM_Geiger\x10\x02\x12\x0f\n\x0b\x43S_UM_Train\x10\x03\x12\x11\n\rCS_UM_HudText\x10\x04\x12\x11\n\rCS_UM_SayText\x10\x05\x12\x12\n\x0e\x43S_UM_SayText2\x10\x06\x12\x11\n\rCS_UM_TextMsg\x10\x07\x12\x10\n\x0c\x43S_UM_HudMsg\x10\x08\x12\x12\n\x0e\x43S_UM_ResetHud\x10\t\x12\x13\n\x0f\x43S_UM_GameTitle\x10\n\x12\x0f\n\x0b\x43S_UM_Shake\x10\x0c\x12\x0e\n\nCS_UM_Fade\x10\r\x12\x10\n\x0c\x43S_UM_Rumble\x10\x0e\x12\x16\n\x12\x43S_UM_CloseCaption\x10\x0f\x12\x1c\n\x18\x43S_UM_CloseCaptionDirect\x10\x10\x12\x13\n\x0f\x43S_UM_SendAudio\x10\x11\x12\x12\n\x0e\x43S_UM_RawAudio\x10\x12\x12\x13\n\x0f\x43S_UM_VoiceMask\x10\x13\x12\x16\n\x12\x43S_UM_RequestState\x10\x14\x12\x10\n\x0c\x43S_UM_Damage\x10\x15\x12\x13\n\x0f\x43S_UM_RadioText\x10\x16\x12\x12\n\x0e\x43S_UM_HintText\x10\x17\x12\x15\n\x11\x43S_UM_KeyHintText\x10\x18\x12$\n CS_UM_ProcessSpottedEntityUpdate\x10\x19\x12\x16\n\x12\x43S_UM_ReloadEffect\x10\x1a\x12\x15\n\x11\x43S_UM_AdjustMoney\x10\x1b\x12\x19\n\x15\x43S_UM_UpdateTeamMoney\x10\x1c\x12\x1b\n\x17\x43S_UM_StopSpectatorMode\x10\x1d\x12\x11\n\rCS_UM_KillCam\x10\x1e\x12\x1a\n\x16\x43S_UM_DesiredTimescale\x10\x1f\x12\x1a\n\x16\x43S_UM_CurrentTimescale\x10 \x12\x1a\n\x16\x43S_UM_AchievementEvent\x10!\x12\x1c\n\x18\x43S_UM_MatchEndConditions\x10\"\x12\x1b\n\x17\x43S_UM_DisconnectToLobby\x10#\x12\x1a\n\x16\x43S_UM_DisplayInventory\x10%\x12\x18\n\x14\x43S_UM_WarmupHasEnded\x10&\x12\x14\n\x10\x43S_UM_ClientInfo\x10\'\x12\x18\n\x14\x43S_UM_CallVoteFailed\x10-\x12\x13\n\x0f\x43S_UM_VoteStart\x10.\x12\x12\n\x0e\x43S_UM_VotePass\x10/\x12\x14\n\x10\x43S_UM_VoteFailed\x10\x30\x12\x13\n\x0f\x43S_UM_VoteSetup\x10\x31\x12&\n\"CS_UM_SendLastKillerDamageToClient\x10\x33\x12\x14\n\x10\x43S_UM_ItemPickup\x10\x35\x12\x12\n\x0e\x43S_UM_ShowMenu\x10\x36\x12\x11\n\rCS_UM_BarTime\x10\x37\x12\x14\n\x10\x43S_UM_AmmoDenied\x10\x38\x12\x19\n\x15\x43S_UM_MarkAchievement\x10\x39\x12\x12\n\x0e\x43S_UM_ItemDrop\x10;\x12\x19\n\x15\x43S_UM_GlowPropTurnOff\x10<B\x05H\x01\x80\x01\x00')
+  serialized_pb=b('\n#cstrike15_usermessages_public.proto\x1a google/protobuf/descriptor.proto\x1a\x18netmessages_public.proto\"\x82\x01\n\x12\x43\x43SUsrMsg_VGUIMenu\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04show\x18\x02 \x01(\x08\x12+\n\x07subkeys\x18\x03 \x03(\x0b\x32\x1a.CCSUsrMsg_VGUIMenu.Subkey\x1a#\n\x06Subkey\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0b\n\x03str\x18\x02 \x01(\t\"!\n\x10\x43\x43SUsrMsg_Geiger\x12\r\n\x05range\x18\x01 \x01(\x05\" \n\x0f\x43\x43SUsrMsg_Train\x12\r\n\x05train\x18\x01 \x01(\x05\"!\n\x11\x43\x43SUsrMsg_HudText\x12\x0c\n\x04text\x18\x01 \x01(\t\"U\n\x11\x43\x43SUsrMsg_SayText\x12\x0f\n\x07\x65nt_idx\x18\x01 \x01(\x05\x12\x0c\n\x04text\x18\x02 \x01(\t\x12\x0c\n\x04\x63hat\x18\x03 \x01(\x08\x12\x13\n\x0btextallchat\x18\x04 \x01(\x08\"j\n\x12\x43\x43SUsrMsg_SayText2\x12\x0f\n\x07\x65nt_idx\x18\x01 \x01(\x05\x12\x0c\n\x04\x63hat\x18\x02 \x01(\x08\x12\x10\n\x08msg_name\x18\x03 \x01(\t\x12\x0e\n\x06params\x18\x04 \x03(\t\x12\x13\n\x0btextallchat\x18\x05 \x01(\x08\"4\n\x11\x43\x43SUsrMsg_TextMsg\x12\x0f\n\x07msg_dst\x18\x01 \x01(\x05\x12\x0e\n\x06params\x18\x03 \x03(\t\"\xe0\x01\n\x10\x43\x43SUsrMsg_HudMsg\x12\x0f\n\x07\x63hannel\x18\x01 \x01(\x05\x12\x1a\n\x03pos\x18\x02 \x01(\x0b\x32\r.CMsgVector2D\x12\x17\n\x04\x63lr1\x18\x03 \x01(\x0b\x32\t.CMsgRGBA\x12\x17\n\x04\x63lr2\x18\x04 \x01(\x0b\x32\t.CMsgRGBA\x12\x0e\n\x06\x65\x66\x66\x65\x63t\x18\x05 \x01(\x05\x12\x14\n\x0c\x66\x61\x64\x65_in_time\x18\x06 \x01(\x02\x12\x15\n\rfade_out_time\x18\x07 \x01(\x02\x12\x11\n\thold_time\x18\t \x01(\x02\x12\x0f\n\x07\x66x_time\x18\n \x01(\x02\x12\x0c\n\x04text\x18\x0b \x01(\t\"`\n\x0f\x43\x43SUsrMsg_Shake\x12\x0f\n\x07\x63ommand\x18\x01 \x01(\x05\x12\x17\n\x0flocal_amplitude\x18\x02 \x01(\x02\x12\x11\n\tfrequency\x18\x03 \x01(\x02\x12\x10\n\x08\x64uration\x18\x04 \x01(\x02\"\\\n\x0e\x43\x43SUsrMsg_Fade\x12\x10\n\x08\x64uration\x18\x01 \x01(\x05\x12\x11\n\thold_time\x18\x02 \x01(\x05\x12\r\n\x05\x66lags\x18\x03 \x01(\x05\x12\x16\n\x03\x63lr\x18\x04 \x01(\x0b\x32\t.CMsgRGBA\">\n\x10\x43\x43SUsrMsg_Rumble\x12\r\n\x05index\x18\x01 \x01(\x05\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\x05\x12\r\n\x05\x66lags\x18\x03 \x01(\x05\"M\n\x16\x43\x43SUsrMsg_CloseCaption\x12\x0c\n\x04hash\x18\x01 \x01(\r\x12\x10\n\x08\x64uration\x18\x02 \x01(\x05\x12\x13\n\x0b\x66rom_player\x18\x03 \x01(\x08\"S\n\x1c\x43\x43SUsrMsg_CloseCaptionDirect\x12\x0c\n\x04hash\x18\x01 \x01(\r\x12\x10\n\x08\x64uration\x18\x02 \x01(\x05\x12\x13\n\x0b\x66rom_player\x18\x03 \x01(\x08\"*\n\x13\x43\x43SUsrMsg_SendAudio\x12\x13\n\x0bradio_sound\x18\x01 \x01(\t\"]\n\x12\x43\x43SUsrMsg_RawAudio\x12\r\n\x05pitch\x18\x01 \x01(\x05\x12\x0e\n\x06\x65ntidx\x18\x02 \x01(\x05\x12\x10\n\x08\x64uration\x18\x03 \x01(\x02\x12\x16\n\x0evoice_filename\x18\x04 \x01(\t\"\xa1\x01\n\x13\x43\x43SUsrMsg_VoiceMask\x12\x35\n\x0cplayer_masks\x18\x01 \x03(\x0b\x32\x1f.CCSUsrMsg_VoiceMask.PlayerMask\x12\x19\n\x11player_mod_enable\x18\x02 \x01(\x08\x1a\x38\n\nPlayerMask\x12\x17\n\x0fgame_rules_mask\x18\x01 \x01(\x05\x12\x11\n\tban_masks\x18\x02 \x01(\x05\"L\n\x10\x43\x43SUsrMsg_Damage\x12\x0e\n\x06\x61mount\x18\x01 \x01(\x05\x12(\n\x13inflictor_world_pos\x18\x02 \x01(\x0b\x32\x0b.CMsgVector\"X\n\x13\x43\x43SUsrMsg_RadioText\x12\x0f\n\x07msg_dst\x18\x01 \x01(\x05\x12\x0e\n\x06\x63lient\x18\x02 \x01(\x05\x12\x10\n\x08msg_name\x18\x03 \x01(\t\x12\x0e\n\x06params\x18\x04 \x03(\t\"\"\n\x12\x43\x43SUsrMsg_HintText\x12\x0c\n\x04text\x18\x01 \x01(\t\"&\n\x15\x43\x43SUsrMsg_KeyHintText\x12\r\n\x05hints\x18\x01 \x03(\t\"\xd6\x02\n$CCSUsrMsg_ProcessSpottedEntityUpdate\x12\x12\n\nnew_update\x18\x01 \x01(\x08\x12Q\n\x0e\x65ntity_updates\x18\x02 \x03(\x0b\x32\x39.CCSUsrMsg_ProcessSpottedEntityUpdate.SpottedEntityUpdate\x1a\xc6\x01\n\x13SpottedEntityUpdate\x12\x12\n\nentity_idx\x18\x01 \x01(\x05\x12\x10\n\x08\x63lass_id\x18\x02 \x01(\x05\x12\x10\n\x08origin_x\x18\x03 \x01(\x05\x12\x10\n\x08origin_y\x18\x04 \x01(\x05\x12\x10\n\x08origin_z\x18\x05 \x01(\x05\x12\x0f\n\x07\x61ngle_y\x18\x06 \x01(\x05\x12\x0f\n\x07\x64\x65\x66user\x18\x07 \x01(\x08\x12\x1a\n\x12player_has_defuser\x18\x08 \x01(\x08\x12\x15\n\rplayer_has_c4\x18\t \x01(\x08\"9\n\x16\x43\x43SUsrMsg_ReloadEffect\x12\x0e\n\x06\x65ntidx\x18\x01 \x01(\x05\x12\x0f\n\x07\x61\x63tanim\x18\x02 \x01(\x05\"\'\n\x15\x43\x43SUsrMsg_AdjustMoney\x12\x0e\n\x06\x61mount\x18\x01 \x01(\x05\"R\n\x11\x43\x43SUsrMsg_KillCam\x12\x10\n\x08obs_mode\x18\x01 \x01(\x05\x12\x14\n\x0c\x66irst_target\x18\x02 \x01(\x05\x12\x15\n\rsecond_target\x18\x03 \x01(\x05\"\x8b\x01\n\x1a\x43\x43SUsrMsg_DesiredTimescale\x12\x19\n\x11\x64\x65sired_timescale\x18\x01 \x01(\x02\x12\x1d\n\x15\x64uration_realtime_sec\x18\x02 \x01(\x02\x12\x19\n\x11interpolator_type\x18\x03 \x01(\x05\x12\x18\n\x10start_blend_time\x18\x04 \x01(\x02\"3\n\x1a\x43\x43SUsrMsg_CurrentTimescale\x12\x15\n\rcur_timescale\x18\x01 \x01(\x02\"Q\n\x1a\x43\x43SUsrMsg_AchievementEvent\x12\x13\n\x0b\x61\x63hievement\x18\x01 \x01(\x05\x12\r\n\x05\x63ount\x18\x02 \x01(\x05\x12\x0f\n\x07user_id\x18\x03 \x01(\x05\"r\n\x1c\x43\x43SUsrMsg_MatchEndConditions\x12\x11\n\tfraglimit\x18\x01 \x01(\x05\x12\x14\n\x0cmp_maxrounds\x18\x02 \x01(\x05\x12\x13\n\x0bmp_winlimit\x18\x03 \x01(\x05\x12\x14\n\x0cmp_timelimit\x18\x04 \x01(\x05\">\n\x1a\x43\x43SUsrMsg_DisplayInventory\x12\x0f\n\x07\x64isplay\x18\x01 \x01(\x08\x12\x0f\n\x07user_id\x18\x02 \x01(\x05\"8\n\x18\x43\x43SUsrMsg_CallVoteFailed\x12\x0e\n\x06reason\x18\x01 \x01(\x05\x12\x0c\n\x04time\x18\x02 \x01(\x05\"\x9e\x01\n\x13\x43\x43SUsrMsg_VoteStart\x12\x0c\n\x04team\x18\x01 \x01(\x05\x12\x0f\n\x07\x65nt_idx\x18\x02 \x01(\x05\x12\x11\n\tvote_type\x18\x03 \x01(\x05\x12\x10\n\x08\x64isp_str\x18\x04 \x01(\t\x12\x13\n\x0b\x64\x65tails_str\x18\x05 \x01(\t\x12\x16\n\x0eother_team_str\x18\x06 \x01(\t\x12\x16\n\x0eis_yes_no_vote\x18\x07 \x01(\x08\"\\\n\x12\x43\x43SUsrMsg_VotePass\x12\x0c\n\x04team\x18\x01 \x01(\x05\x12\x11\n\tvote_type\x18\x02 \x01(\x05\x12\x10\n\x08\x64isp_str\x18\x03 \x01(\t\x12\x13\n\x0b\x64\x65tails_str\x18\x04 \x01(\t\"4\n\x14\x43\x43SUsrMsg_VoteFailed\x12\x0c\n\x04team\x18\x01 \x01(\x05\x12\x0e\n\x06reason\x18\x02 \x01(\x05\"/\n\x13\x43\x43SUsrMsg_VoteSetup\x12\x18\n\x10potential_issues\x18\x01 \x03(\t\"\x84\x01\n&CCSUsrMsg_SendLastKillerDamageToClient\x12\x16\n\x0enum_hits_given\x18\x01 \x01(\x05\x12\x14\n\x0c\x64\x61mage_given\x18\x02 \x01(\x05\x12\x16\n\x0enum_hits_taken\x18\x03 \x01(\x05\x12\x14\n\x0c\x64\x61mage_taken\x18\x04 \x01(\x05\"$\n\x14\x43\x43SUsrMsg_ItemPickup\x12\x0c\n\x04item\x18\x01 \x01(\t\"Y\n\x12\x43\x43SUsrMsg_ShowMenu\x12\x18\n\x10\x62its_valid_slots\x18\x01 \x01(\x05\x12\x14\n\x0c\x64isplay_time\x18\x02 \x01(\x05\x12\x13\n\x0bmenu_string\x18\x03 \x01(\t\"!\n\x11\x43\x43SUsrMsg_BarTime\x12\x0c\n\x04time\x18\x01 \x01(\t\"\'\n\x14\x43\x43SUsrMsg_AmmoDenied\x12\x0f\n\x07\x61mmoIdx\x18\x01 \x01(\x05\"0\n\x19\x43\x43SUsrMsg_MarkAchievement\x12\x13\n\x0b\x61\x63hievement\x18\x01 \x01(\t\"3\n\x12\x43\x43SUsrMsg_ItemDrop\x12\x0e\n\x06itemid\x18\x01 \x01(\x03\x12\r\n\x05\x64\x65\x61th\x18\x02 \x01(\x08\"+\n\x19\x43\x43SUsrMsg_GlowPropTurnOff\x12\x0e\n\x06\x65ntidx\x18\x01 \x01(\x05\"b\n\x1e\x43\x43SUsrMsg_RoundBackupFilenames\x12\r\n\x05\x63ount\x18\x01 \x01(\x05\x12\r\n\x05index\x18\x02 \x01(\x05\x12\x10\n\x08\x66ilename\x18\x03 \x01(\t\x12\x10\n\x08nicename\x18\x04 \x01(\t\"#\n\x12\x43\x43SUsrMsg_ResetHud\x12\r\n\x05reset\x18\x01 \x01(\x08\"$\n\x13\x43\x43SUsrMsg_GameTitle\x12\r\n\x05\x64ummy\x18\x01 \x01(\x05\"\'\n\x16\x43\x43SUsrMsg_RequestState\x12\r\n\x05\x64ummy\x18\x01 \x01(\x05\",\n\x1b\x43\x43SUsrMsg_StopSpectatorMode\x12\r\n\x05\x64ummy\x18\x01 \x01(\x05\",\n\x1b\x43\x43SUsrMsg_DisconnectToLobby\x12\r\n\x05\x64ummy\x18\x01 \x01(\x05\")\n\x18\x43\x43SUsrMsg_WarmupHasEnded\x12\r\n\x05\x64ummy\x18\x01 \x01(\x05\"%\n\x14\x43\x43SUsrMsg_ClientInfo\x12\r\n\x05\x64ummy\x18\x01 \x01(\x05*\x96\t\n\x16\x45\x43strike15UserMessages\x12\x12\n\x0e\x43S_UM_VGUIMenu\x10\x01\x12\x10\n\x0c\x43S_UM_Geiger\x10\x02\x12\x0f\n\x0b\x43S_UM_Train\x10\x03\x12\x11\n\rCS_UM_HudText\x10\x04\x12\x11\n\rCS_UM_SayText\x10\x05\x12\x12\n\x0e\x43S_UM_SayText2\x10\x06\x12\x11\n\rCS_UM_TextMsg\x10\x07\x12\x10\n\x0c\x43S_UM_HudMsg\x10\x08\x12\x12\n\x0e\x43S_UM_ResetHud\x10\t\x12\x13\n\x0f\x43S_UM_GameTitle\x10\n\x12\x0f\n\x0b\x43S_UM_Shake\x10\x0c\x12\x0e\n\nCS_UM_Fade\x10\r\x12\x10\n\x0c\x43S_UM_Rumble\x10\x0e\x12\x16\n\x12\x43S_UM_CloseCaption\x10\x0f\x12\x1c\n\x18\x43S_UM_CloseCaptionDirect\x10\x10\x12\x13\n\x0f\x43S_UM_SendAudio\x10\x11\x12\x12\n\x0e\x43S_UM_RawAudio\x10\x12\x12\x13\n\x0f\x43S_UM_VoiceMask\x10\x13\x12\x16\n\x12\x43S_UM_RequestState\x10\x14\x12\x10\n\x0c\x43S_UM_Damage\x10\x15\x12\x13\n\x0f\x43S_UM_RadioText\x10\x16\x12\x12\n\x0e\x43S_UM_HintText\x10\x17\x12\x15\n\x11\x43S_UM_KeyHintText\x10\x18\x12$\n CS_UM_ProcessSpottedEntityUpdate\x10\x19\x12\x16\n\x12\x43S_UM_ReloadEffect\x10\x1a\x12\x15\n\x11\x43S_UM_AdjustMoney\x10\x1b\x12\x19\n\x15\x43S_UM_UpdateTeamMoney\x10\x1c\x12\x1b\n\x17\x43S_UM_StopSpectatorMode\x10\x1d\x12\x11\n\rCS_UM_KillCam\x10\x1e\x12\x1a\n\x16\x43S_UM_DesiredTimescale\x10\x1f\x12\x1a\n\x16\x43S_UM_CurrentTimescale\x10 \x12\x1a\n\x16\x43S_UM_AchievementEvent\x10!\x12\x1c\n\x18\x43S_UM_MatchEndConditions\x10\"\x12\x1b\n\x17\x43S_UM_DisconnectToLobby\x10#\x12\x1a\n\x16\x43S_UM_DisplayInventory\x10%\x12\x18\n\x14\x43S_UM_WarmupHasEnded\x10&\x12\x14\n\x10\x43S_UM_ClientInfo\x10\'\x12\x18\n\x14\x43S_UM_CallVoteFailed\x10-\x12\x13\n\x0f\x43S_UM_VoteStart\x10.\x12\x12\n\x0e\x43S_UM_VotePass\x10/\x12\x14\n\x10\x43S_UM_VoteFailed\x10\x30\x12\x13\n\x0f\x43S_UM_VoteSetup\x10\x31\x12&\n\"CS_UM_SendLastKillerDamageToClient\x10\x33\x12\x14\n\x10\x43S_UM_ItemPickup\x10\x35\x12\x12\n\x0e\x43S_UM_ShowMenu\x10\x36\x12\x11\n\rCS_UM_BarTime\x10\x37\x12\x14\n\x10\x43S_UM_AmmoDenied\x10\x38\x12\x19\n\x15\x43S_UM_MarkAchievement\x10\x39\x12\x12\n\x0e\x43S_UM_ItemDrop\x10;\x12\x19\n\x15\x43S_UM_GlowPropTurnOff\x10<B\x05H\x01\x80\x01\x00'))
 
 _ECSTRIKE15USERMESSAGES = _descriptor.EnumDescriptor(
   name='ECstrike15UserMessages',
@@ -295,14 +321,14 @@ _CCSUSRMSG_VGUIMENU_SUBKEY = _descriptor.Descriptor(
     _descriptor.FieldDescriptor(
       name='name', full_name='CCSUsrMsg_VGUIMenu.Subkey.name', index=0,
       number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
+      has_default_value=False, default_value=unicode(b(""), "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='str', full_name='CCSUsrMsg_VGUIMenu.Subkey.str', index=1,
       number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
+      has_default_value=False, default_value=unicode(b(""), "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -329,7 +355,7 @@ _CCSUSRMSG_VGUIMENU = _descriptor.Descriptor(
     _descriptor.FieldDescriptor(
       name='name', full_name='CCSUsrMsg_VGUIMenu.name', index=0,
       number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
+      has_default_value=False, default_value=unicode(b(""), "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -427,7 +453,7 @@ _CCSUSRMSG_HUDTEXT = _descriptor.Descriptor(
     _descriptor.FieldDescriptor(
       name='text', full_name='CCSUsrMsg_HudText.text', index=0,
       number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
+      has_default_value=False, default_value=unicode(b(""), "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -462,7 +488,7 @@ _CCSUSRMSG_SAYTEXT = _descriptor.Descriptor(
     _descriptor.FieldDescriptor(
       name='text', full_name='CCSUsrMsg_SayText.text', index=1,
       number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
+      has_default_value=False, default_value=unicode(b(""), "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -518,7 +544,7 @@ _CCSUSRMSG_SAYTEXT2 = _descriptor.Descriptor(
     _descriptor.FieldDescriptor(
       name='msg_name', full_name='CCSUsrMsg_SayText2.msg_name', index=2,
       number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
+      has_default_value=False, default_value=unicode(b(""), "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -658,7 +684,7 @@ _CCSUSRMSG_HUDMSG = _descriptor.Descriptor(
     _descriptor.FieldDescriptor(
       name='text', full_name='CCSUsrMsg_HudMsg.text', index=9,
       number=11, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
+      has_default_value=False, default_value=unicode(b(""), "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -910,7 +936,7 @@ _CCSUSRMSG_SENDAUDIO = _descriptor.Descriptor(
     _descriptor.FieldDescriptor(
       name='radio_sound', full_name='CCSUsrMsg_SendAudio.radio_sound', index=0,
       number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
+      has_default_value=False, default_value=unicode(b(""), "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -959,7 +985,7 @@ _CCSUSRMSG_RAWAUDIO = _descriptor.Descriptor(
     _descriptor.FieldDescriptor(
       name='voice_filename', full_name='CCSUsrMsg_RawAudio.voice_filename', index=3,
       number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
+      has_default_value=False, default_value=unicode(b(""), "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -1105,7 +1131,7 @@ _CCSUSRMSG_RADIOTEXT = _descriptor.Descriptor(
     _descriptor.FieldDescriptor(
       name='msg_name', full_name='CCSUsrMsg_RadioText.msg_name', index=2,
       number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
+      has_default_value=False, default_value=unicode(b(""), "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -1140,7 +1166,7 @@ _CCSUSRMSG_HINTTEXT = _descriptor.Descriptor(
     _descriptor.FieldDescriptor(
       name='text', full_name='CCSUsrMsg_HintText.text', index=0,
       number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
+      has_default_value=False, default_value=unicode(b(""), "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -1678,21 +1704,21 @@ _CCSUSRMSG_VOTESTART = _descriptor.Descriptor(
     _descriptor.FieldDescriptor(
       name='disp_str', full_name='CCSUsrMsg_VoteStart.disp_str', index=3,
       number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
+      has_default_value=False, default_value=unicode(b(""), "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='details_str', full_name='CCSUsrMsg_VoteStart.details_str', index=4,
       number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
+      has_default_value=False, default_value=unicode(b(""), "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='other_team_str', full_name='CCSUsrMsg_VoteStart.other_team_str', index=5,
       number=6, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
+      has_default_value=False, default_value=unicode(b(""), "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -1741,14 +1767,14 @@ _CCSUSRMSG_VOTEPASS = _descriptor.Descriptor(
     _descriptor.FieldDescriptor(
       name='disp_str', full_name='CCSUsrMsg_VotePass.disp_str', index=2,
       number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
+      has_default_value=False, default_value=unicode(b(""), "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='details_str', full_name='CCSUsrMsg_VotePass.details_str', index=3,
       number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
+      has_default_value=False, default_value=unicode(b(""), "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -1888,7 +1914,7 @@ _CCSUSRMSG_ITEMPICKUP = _descriptor.Descriptor(
     _descriptor.FieldDescriptor(
       name='item', full_name='CCSUsrMsg_ItemPickup.item', index=0,
       number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
+      has_default_value=False, default_value=unicode(b(""), "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -1930,7 +1956,7 @@ _CCSUSRMSG_SHOWMENU = _descriptor.Descriptor(
     _descriptor.FieldDescriptor(
       name='menu_string', full_name='CCSUsrMsg_ShowMenu.menu_string', index=2,
       number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
+      has_default_value=False, default_value=unicode(b(""), "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -1958,7 +1984,7 @@ _CCSUSRMSG_BARTIME = _descriptor.Descriptor(
     _descriptor.FieldDescriptor(
       name='time', full_name='CCSUsrMsg_BarTime.time', index=0,
       number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
+      has_default_value=False, default_value=unicode(b(""), "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -2014,7 +2040,7 @@ _CCSUSRMSG_MARKACHIEVEMENT = _descriptor.Descriptor(
     _descriptor.FieldDescriptor(
       name='achievement', full_name='CCSUsrMsg_MarkAchievement.achievement', index=0,
       number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
+      has_default_value=False, default_value=unicode(b(""), "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -2119,14 +2145,14 @@ _CCSUSRMSG_ROUNDBACKUPFILENAMES = _descriptor.Descriptor(
     _descriptor.FieldDescriptor(
       name='filename', full_name='CCSUsrMsg_RoundBackupFilenames.filename', index=2,
       number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
+      has_default_value=False, default_value=unicode(b(""), "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='nicename', full_name='CCSUsrMsg_RoundBackupFilenames.nicename', index=3,
       number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
+      has_default_value=False, default_value=unicode(b(""), "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -2401,325 +2427,322 @@ DESCRIPTOR.message_types_by_name['CCSUsrMsg_DisconnectToLobby'] = _CCSUSRMSG_DIS
 DESCRIPTOR.message_types_by_name['CCSUsrMsg_WarmupHasEnded'] = _CCSUSRMSG_WARMUPHASENDED
 DESCRIPTOR.message_types_by_name['CCSUsrMsg_ClientInfo'] = _CCSUSRMSG_CLIENTINFO
 
-class CCSUsrMsg_VGUIMenu(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-
-  class Subkey(_message.Message):
-    __metaclass__ = _reflection.GeneratedProtocolMessageType
-    DESCRIPTOR = _CCSUSRMSG_VGUIMENU_SUBKEY
-
-    # @@protoc_insertion_point(class_scope:CCSUsrMsg_VGUIMenu.Subkey)
-  DESCRIPTOR = _CCSUSRMSG_VGUIMENU
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_VGUIMenu)
-
-class CCSUsrMsg_Geiger(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_GEIGER
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_Geiger)
-
-class CCSUsrMsg_Train(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_TRAIN
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_Train)
-
-class CCSUsrMsg_HudText(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_HUDTEXT
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_HudText)
-
-class CCSUsrMsg_SayText(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_SAYTEXT
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_SayText)
-
-class CCSUsrMsg_SayText2(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_SAYTEXT2
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_SayText2)
-
-class CCSUsrMsg_TextMsg(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_TEXTMSG
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_TextMsg)
-
-class CCSUsrMsg_HudMsg(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_HUDMSG
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_HudMsg)
-
-class CCSUsrMsg_Shake(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_SHAKE
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_Shake)
-
-class CCSUsrMsg_Fade(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_FADE
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_Fade)
-
-class CCSUsrMsg_Rumble(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_RUMBLE
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_Rumble)
-
-class CCSUsrMsg_CloseCaption(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_CLOSECAPTION
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_CloseCaption)
-
-class CCSUsrMsg_CloseCaptionDirect(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_CLOSECAPTIONDIRECT
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_CloseCaptionDirect)
-
-class CCSUsrMsg_SendAudio(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_SENDAUDIO
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_SendAudio)
-
-class CCSUsrMsg_RawAudio(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_RAWAUDIO
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_RawAudio)
-
-class CCSUsrMsg_VoiceMask(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-
-  class PlayerMask(_message.Message):
-    __metaclass__ = _reflection.GeneratedProtocolMessageType
-    DESCRIPTOR = _CCSUSRMSG_VOICEMASK_PLAYERMASK
-
-    # @@protoc_insertion_point(class_scope:CCSUsrMsg_VoiceMask.PlayerMask)
-  DESCRIPTOR = _CCSUSRMSG_VOICEMASK
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_VoiceMask)
-
-class CCSUsrMsg_Damage(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_DAMAGE
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_Damage)
-
-class CCSUsrMsg_RadioText(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_RADIOTEXT
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_RadioText)
-
-class CCSUsrMsg_HintText(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_HINTTEXT
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_HintText)
-
-class CCSUsrMsg_KeyHintText(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_KEYHINTTEXT
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_KeyHintText)
-
-class CCSUsrMsg_ProcessSpottedEntityUpdate(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-
-  class SpottedEntityUpdate(_message.Message):
-    __metaclass__ = _reflection.GeneratedProtocolMessageType
-    DESCRIPTOR = _CCSUSRMSG_PROCESSSPOTTEDENTITYUPDATE_SPOTTEDENTITYUPDATE
-
-    # @@protoc_insertion_point(class_scope:CCSUsrMsg_ProcessSpottedEntityUpdate.SpottedEntityUpdate)
-  DESCRIPTOR = _CCSUSRMSG_PROCESSSPOTTEDENTITYUPDATE
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_ProcessSpottedEntityUpdate)
-
-class CCSUsrMsg_ReloadEffect(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_RELOADEFFECT
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_ReloadEffect)
-
-class CCSUsrMsg_AdjustMoney(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_ADJUSTMONEY
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_AdjustMoney)
-
-class CCSUsrMsg_KillCam(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_KILLCAM
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_KillCam)
-
-class CCSUsrMsg_DesiredTimescale(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_DESIREDTIMESCALE
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_DesiredTimescale)
-
-class CCSUsrMsg_CurrentTimescale(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_CURRENTTIMESCALE
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_CurrentTimescale)
-
-class CCSUsrMsg_AchievementEvent(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_ACHIEVEMENTEVENT
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_AchievementEvent)
-
-class CCSUsrMsg_MatchEndConditions(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_MATCHENDCONDITIONS
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_MatchEndConditions)
-
-class CCSUsrMsg_DisplayInventory(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_DISPLAYINVENTORY
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_DisplayInventory)
-
-class CCSUsrMsg_CallVoteFailed(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_CALLVOTEFAILED
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_CallVoteFailed)
-
-class CCSUsrMsg_VoteStart(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_VOTESTART
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_VoteStart)
-
-class CCSUsrMsg_VotePass(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_VOTEPASS
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_VotePass)
-
-class CCSUsrMsg_VoteFailed(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_VOTEFAILED
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_VoteFailed)
-
-class CCSUsrMsg_VoteSetup(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_VOTESETUP
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_VoteSetup)
-
-class CCSUsrMsg_SendLastKillerDamageToClient(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_SENDLASTKILLERDAMAGETOCLIENT
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_SendLastKillerDamageToClient)
-
-class CCSUsrMsg_ItemPickup(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_ITEMPICKUP
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_ItemPickup)
-
-class CCSUsrMsg_ShowMenu(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_SHOWMENU
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_ShowMenu)
-
-class CCSUsrMsg_BarTime(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_BARTIME
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_BarTime)
-
-class CCSUsrMsg_AmmoDenied(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_AMMODENIED
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_AmmoDenied)
-
-class CCSUsrMsg_MarkAchievement(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_MARKACHIEVEMENT
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_MarkAchievement)
-
-class CCSUsrMsg_ItemDrop(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_ITEMDROP
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_ItemDrop)
-
-class CCSUsrMsg_GlowPropTurnOff(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_GLOWPROPTURNOFF
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_GlowPropTurnOff)
-
-class CCSUsrMsg_RoundBackupFilenames(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_ROUNDBACKUPFILENAMES
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_RoundBackupFilenames)
-
-class CCSUsrMsg_ResetHud(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_RESETHUD
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_ResetHud)
-
-class CCSUsrMsg_GameTitle(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_GAMETITLE
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_GameTitle)
-
-class CCSUsrMsg_RequestState(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_REQUESTSTATE
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_RequestState)
-
-class CCSUsrMsg_StopSpectatorMode(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_STOPSPECTATORMODE
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_StopSpectatorMode)
-
-class CCSUsrMsg_DisconnectToLobby(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_DISCONNECTTOLOBBY
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_DisconnectToLobby)
-
-class CCSUsrMsg_WarmupHasEnded(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_WARMUPHASENDED
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_WarmupHasEnded)
-
-class CCSUsrMsg_ClientInfo(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CCSUSRMSG_CLIENTINFO
-
-  # @@protoc_insertion_point(class_scope:CCSUsrMsg_ClientInfo)
+CCSUsrMsg_VGUIMenu = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_VGUIMenu', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_VGUIMENU,
+      'Subkey': _reflection.GeneratedProtocolMessageType('Subkey', (_message.Message,),
+          {
+            'DESCRIPTOR': _CCSUSRMSG_VGUIMENU_SUBKEY,
+            # @@protoc_insertion_point(class_scope:CCSUsrMsg_VGUIMenu.Subkey)
+          }),
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_VGUIMenu)
+    })
+
+CCSUsrMsg_Geiger = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_Geiger', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_GEIGER,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_Geiger)
+    })
+
+CCSUsrMsg_Train = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_Train', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_TRAIN,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_Train)
+    })
+
+CCSUsrMsg_HudText = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_HudText', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_HUDTEXT,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_HudText)
+    })
+
+CCSUsrMsg_SayText = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_SayText', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_SAYTEXT,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_SayText)
+    })
+
+CCSUsrMsg_SayText2 = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_SayText2', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_SAYTEXT2,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_SayText2)
+    })
+
+CCSUsrMsg_TextMsg = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_TextMsg', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_TEXTMSG,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_TextMsg)
+    })
+
+CCSUsrMsg_HudMsg = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_HudMsg', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_HUDMSG,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_HudMsg)
+    })
+
+CCSUsrMsg_Shake = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_Shake', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_SHAKE,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_Shake)
+    })
+
+CCSUsrMsg_Fade = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_Fade', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_FADE,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_Fade)
+    })
+
+CCSUsrMsg_Rumble = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_Rumble', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_RUMBLE,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_Rumble)
+    })
+
+CCSUsrMsg_CloseCaption = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_CloseCaption', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_CLOSECAPTION,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_CloseCaption)
+    })
+
+CCSUsrMsg_CloseCaptionDirect = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_CloseCaptionDirect', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_CLOSECAPTIONDIRECT,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_CloseCaptionDirect)
+    })
+
+CCSUsrMsg_SendAudio = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_SendAudio', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_SENDAUDIO,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_SendAudio)
+    })
+
+CCSUsrMsg_RawAudio = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_RawAudio', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_RAWAUDIO,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_RawAudio)
+    })
+
+CCSUsrMsg_VoiceMask = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_VoiceMask', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_VOICEMASK,
+      'PlayerMask': _reflection.GeneratedProtocolMessageType('PlayerMask', (_message.Message,),
+          {
+            'DESCRIPTOR': _CCSUSRMSG_VOICEMASK_PLAYERMASK,
+            # @@protoc_insertion_point(class_scope:CCSUsrMsg_VoiceMask.PlayerMask)
+          }),
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_VoiceMask)
+    })
+
+CCSUsrMsg_Damage = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_Damage', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_DAMAGE,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_Damage)
+    })
+
+CCSUsrMsg_RadioText = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_RadioText', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_RADIOTEXT,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_RadioText)
+    })
+
+CCSUsrMsg_HintText = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_HintText', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_HINTTEXT,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_HintText)
+    })
+
+CCSUsrMsg_KeyHintText = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_KeyHintText', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_KEYHINTTEXT,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_KeyHintText)
+    })
+
+CCSUsrMsg_ProcessSpottedEntityUpdate = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_ProcessSpottedEntityUpdate', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_PROCESSSPOTTEDENTITYUPDATE,
+      'SpottedEntityUpdate': _reflection.GeneratedProtocolMessageType('SpottedEntityUpdate', (_message.Message,),
+          {
+            'DESCRIPTOR': _CCSUSRMSG_PROCESSSPOTTEDENTITYUPDATE_SPOTTEDENTITYUPDATE,
+            # @@protoc_insertion_point(class_scope:CCSUsrMsg_ProcessSpottedEntityUpdate.SpottedEntityUpdate)
+          }),
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_ProcessSpottedEntityUpdate)
+    })
+
+CCSUsrMsg_ReloadEffect = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_ReloadEffect', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_RELOADEFFECT,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_ReloadEffect)
+    })
+
+CCSUsrMsg_AdjustMoney = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_AdjustMoney', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_ADJUSTMONEY,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_AdjustMoney)
+    })
+
+CCSUsrMsg_KillCam = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_KillCam', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_KILLCAM,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_KillCam)
+    })
+
+CCSUsrMsg_DesiredTimescale = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_DesiredTimescale', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_DESIREDTIMESCALE,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_DesiredTimescale)
+    })
+
+CCSUsrMsg_CurrentTimescale = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_CurrentTimescale', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_CURRENTTIMESCALE,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_CurrentTimescale)
+    })
+
+CCSUsrMsg_AchievementEvent = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_AchievementEvent', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_ACHIEVEMENTEVENT,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_AchievementEvent)
+    })
+
+CCSUsrMsg_MatchEndConditions = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_MatchEndConditions', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_MATCHENDCONDITIONS,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_MatchEndConditions)
+    })
+
+CCSUsrMsg_DisplayInventory = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_DisplayInventory', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_DISPLAYINVENTORY,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_DisplayInventory)
+    })
+
+CCSUsrMsg_CallVoteFailed = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_CallVoteFailed', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_CALLVOTEFAILED,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_CallVoteFailed)
+    })
+
+CCSUsrMsg_VoteStart = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_VoteStart', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_VOTESTART,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_VoteStart)
+    })
+
+CCSUsrMsg_VotePass = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_VotePass', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_VOTEPASS,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_VotePass)
+    })
+
+CCSUsrMsg_VoteFailed = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_VoteFailed', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_VOTEFAILED,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_VoteFailed)
+    })
+
+CCSUsrMsg_VoteSetup = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_VoteSetup', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_VOTESETUP,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_VoteSetup)
+    })
+
+CCSUsrMsg_SendLastKillerDamageToClient = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_SendLastKillerDamageToClient', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_SENDLASTKILLERDAMAGETOCLIENT,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_SendLastKillerDamageToClient)
+    })
+
+CCSUsrMsg_ItemPickup = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_ItemPickup', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_ITEMPICKUP,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_ItemPickup)
+    })
+
+CCSUsrMsg_ShowMenu = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_ShowMenu', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_SHOWMENU,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_ShowMenu)
+    })
+
+CCSUsrMsg_BarTime = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_BarTime', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_BARTIME,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_BarTime)
+    })
+
+CCSUsrMsg_AmmoDenied = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_AmmoDenied', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_AMMODENIED,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_AmmoDenied)
+    })
+
+CCSUsrMsg_MarkAchievement = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_MarkAchievement', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_MARKACHIEVEMENT,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_MarkAchievement)
+    })
+
+CCSUsrMsg_ItemDrop = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_ItemDrop', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_ITEMDROP,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_ItemDrop)
+    })
+
+CCSUsrMsg_GlowPropTurnOff = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_GlowPropTurnOff', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_GLOWPROPTURNOFF,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_GlowPropTurnOff)
+    })
+
+CCSUsrMsg_RoundBackupFilenames = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_RoundBackupFilenames', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_ROUNDBACKUPFILENAMES,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_RoundBackupFilenames)
+    })
+
+CCSUsrMsg_ResetHud = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_ResetHud', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_RESETHUD,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_ResetHud)
+    })
+
+CCSUsrMsg_GameTitle = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_GameTitle', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_GAMETITLE,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_GameTitle)
+    })
+
+CCSUsrMsg_RequestState = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_RequestState', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_REQUESTSTATE,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_RequestState)
+    })
+
+CCSUsrMsg_StopSpectatorMode = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_StopSpectatorMode', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_STOPSPECTATORMODE,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_StopSpectatorMode)
+    })
+
+CCSUsrMsg_DisconnectToLobby = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_DisconnectToLobby', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_DISCONNECTTOLOBBY,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_DisconnectToLobby)
+    })
+
+CCSUsrMsg_WarmupHasEnded = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_WarmupHasEnded', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_WARMUPHASENDED,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_WarmupHasEnded)
+    })
+
+CCSUsrMsg_ClientInfo = _reflection.GeneratedProtocolMessageType('CCSUsrMsg_ClientInfo', (_message.Message,),
+    {
+      'DESCRIPTOR': _CCSUSRMSG_CLIENTINFO,
+      # @@protoc_insertion_point(class_scope:CCSUsrMsg_ClientInfo)
+    })
 
 
 DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), 'H\001\200\001\000')
+DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), b('H\001\200\001\000'))
 # @@protoc_insertion_point(module_scope)

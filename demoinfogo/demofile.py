@@ -70,7 +70,7 @@ class DemoFile(object):
         self.file = demofile
 
         fmt = '@8sii{0}s{0}s{0}s{0}sfiii'.format(MAXOSPATH)
-        data = self._read_struct(fmt)
+        data = struct.unpack(fmt, self.file.read(struct.calcsize(fmt)))
         self.header = DemoHeader(*list(data))
 
         if self.header.demofilestamp != DEMOHEADER:
@@ -79,17 +79,11 @@ class DemoFile(object):
         if self.header.demoprotocol != DEMOPROTOCOL:
             raise DemoError('Unsupported protocol')
 
-    def __enter__(self):
-        return self
-
-    def __exit__(self, type, value, traceback):
-        self.file.close()
-
     def _read_struct(self, fmt):
-        return struct.unpack(fmt, self.file.read(struct.calcsize(fmt)))
+        return struct.unpack(fmt, self.file.read(struct.calcsize(fmt)))[0]
 
     def read_raw_data(self):
-        size = self._read_struct('@B')
+        size = self._read_struct('@i')
         data = self.file.read(size)
 
         return size, data

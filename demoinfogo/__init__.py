@@ -1,3 +1,3 @@
-__all__ = ['demo']
+__all__ = ['demodump', 'demofile']
 
-from . import file
+from . import *

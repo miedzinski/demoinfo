@@ -66,8 +66,8 @@ class DemoHeader(object):
 
 class DemoFile(object):
 
-    def __init__(self, path):
-        self.file = open(path, 'rb')
+    def __init__(self, demofile):
+        self.file = demofile
 
         fmt = '@8sii{0}s{0}s{0}s{0}sfiii'.format(MAXOSPATH)
         data = self._read_struct(fmt)
@@ -86,7 +86,7 @@ class DemoFile(object):
         self.file.close()
 
     def _read_struct(self, fmt):
-        return struct.unpack(fmt, self.file.read(struct.calcize(fmt)))
+        return struct.unpack(fmt, self.file.read(struct.calcsize(fmt)))
 
     def read_raw_data(self):
         size = self._read_struct('@B')

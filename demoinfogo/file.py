@@ -86,7 +86,7 @@ class DemoFile(object):
         self.file.close()
 
     def _read_struct(self, fmt):
-        return struct.unpack(fmt, self.file.read(struct.calcize))
+        return struct.unpack(fmt, self.file.read(struct.calcize(fmt)))
 
     def read_raw_data(self):
         size = self._read_struct('@B')

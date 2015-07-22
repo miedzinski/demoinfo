@@ -69,8 +69,8 @@ class DemoFile(object):
     def __init__(self, path):
         self.file = open(path, 'rb')
 
-        demoheader = struct.Struct('@8sii{0}s{0}s{0}s{0}sfiii'.format(MAXOSPATH))
-        data = demoheader.unpack_from(self.file.read(demoheader.size))
+        fmt = '@8sii{0}s{0}s{0}s{0}sfiii'.format(MAXOSPATH)
+        data = self._read_struct(fmt)
         self.header = DemoHeader(*list(data))
 
         if self.header.demofilestamp != DEMOHEADER:

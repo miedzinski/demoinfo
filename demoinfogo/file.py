@@ -1,12 +1,11 @@
 import struct
 
-from . import netmessages_public_pb2
-from . import cstrike15_usermessages_public_pb2
-
 
 MAXOSPATH = 260
 DEMOHEADER = 'HL2DEMO'
 DEMOPROTOCOL = 4
+
+MAXSPLITSCREENCLIENTS = 2
 
 
 class DemoError(Exception):
@@ -80,10 +79,44 @@ class DemoFile(object):
         if self.header.demoprotocol != DEMOPROTOCOL:
             raise DemoError('Unsupported protocol')
 
-        self.offset = demoheader.size
-
     def __enter__(self):
         return self
 
     def __exit__(self, type, value, traceback):
         self.file.close()
+
+    def _read_struct(self, fmt):
+        return struct.unpack(fmt, self.file.read(struct.calcize))
+
+    def read_raw_data(self):
+        size = self._read_struct('@B')
+        data = self.file.read(size)
+
+        return size, data
+
+    def read_sequence_info(self):
+        seq_nr_in = self._read_struct('@i')
+        seq_nr_out = self._read_struct('@i')
+
+        return seq_nr_in, seq_nr_out
+
+    def read_cmd_info(self):
+        fmt = '@{}'.format('iffffffffffffffffff' * MAXSPLITSCREENCLIENTS)
+
+        return self._read_struct(fmt)
+
+    def read_cmd_header(self):
+        cmd = self._read_struct('@B')
+        if cmd <= 0:
+            cmd = DemoMsg.dem_stop
+            return cmd, 0, 0
+        tick = self._read_struct('@i')
+        player_slot = self._read_struct('@B')
+
+        return cmd, tick, player_slot
+
+    def read_user_cmd(self):
+        outgoing_sequence = self._read_struct('@i')
+        size, data = self.read_raw_data()
+
+        return outgoing_sequence, size, data

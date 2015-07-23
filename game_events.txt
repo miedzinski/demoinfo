@@ -2,109 +2,184 @@ name: server_spawn
 id: 0
 keys: {
   name: hostname
+  type: string
+
   name: address
+  type: string
+
   name: port
+  type: short
+
   name: game
+  type: string
+
   name: mapname
+  type: string
+
   name: maxplayers
+  type: long
+
   name: os
+  type: string
+
   name: dedicated
+  type: bool
+
   name: official
+  type: bool
+
   name: password
+  type: bool
 }
 
 name: server_pre_shutdown
 id: 1
 keys: {
   name: reason
+  type: string
 }
 
 name: server_shutdown
 id: 2
 keys: {
   name: reason
+  type: string
 }
 
 name: server_cvar
 id: 3
 keys: {
   name: cvarname
+  type: string
+
   name: cvarvalue
+  type: string
 }
 
 name: server_message
 id: 4
 keys: {
   name: text
+  type: string
 }
 
 name: server_addban
 id: 5
 keys: {
   name: name
+  type: string
+
   name: userid
+  type: short
+
   name: networkid
+  type: string
+
   name: ip
+  type: string
+
   name: duration
+  type: string
+
   name: by
+  type: string
+
   name: kicked
+  type: bool
 }
 
 name: server_removeban
 id: 6
 keys: {
   name: networkid
+  type: string
+
   name: ip
+  type: string
+
   name: by
+  type: string
 }
 
 name: player_connect
 id: 7
 keys: {
   name: name
+  type: string
+
   name: index
+  type: byte
+
   name: userid
+  type: short
+
   name: networkid
+  type: string
+
   name: address
+  type: string
 }
 
 name: player_info
 id: 8
 keys: {
   name: name
+  type: string
+
   name: index
+  type: byte
+
   name: userid
+  type: short
+
   name: networkid
+  type: string
+
   name: bot
+  type: bool
 }
 
 name: player_disconnect
 id: 9
 keys: {
   name: userid
+  type: short
+
   name: reason
+  type: string
+
   name: name
+  type: string
+
   name: networkid
+  type: string
 }
 
 name: player_activate
 id: 10
 keys: {
   name: userid
+  type: short
 }
 
 name: player_connect_full
 id: 11
 keys: {
   name: userid
+  type: short
+
   name: index
+  type: byte
 }
 
 name: player_say
 id: 12
 keys: {
   name: userid
+  type: short
+
   name: text
+  type: string
 }
 
 name: cs_round_start_beep
@@ -126,21 +201,30 @@ name: team_info
 id: 16
 keys: {
   name: teamid
+  type: byte
+
   name: teamname
+  type: string
 }
 
 name: team_score
 id: 17
 keys: {
   name: teamid
+  type: byte
+
   name: score
+  type: short
 }
 
 name: teamplay_broadcast_audio
 id: 18
 keys: {
   name: team
+  type: byte
+
   name: sound
+  type: string
 }
 
 name: gameui_hidden
@@ -152,111 +236,201 @@ name: items_gifted
 id: 20
 keys: {
   name: player
+  type: byte
+
   name: itemdef
+  type: long
+
   name: numgifts
+  type: byte
+
   name: giftidx
+  type: byte
+
   name: accountid
+  type: long
 }
 
 name: player_team
 id: 21
 keys: {
   name: userid
+  type: short
+
   name: team
+  type: byte
+
   name: oldteam
+  type: byte
+
   name: disconnect
+  type: bool
+
   name: autoteam
+  type: bool
+
   name: silent
+  type: bool
+
   name: isbot
+  type: bool
 }
 
 name: player_class
 id: 22
 keys: {
   name: userid
+  type: short
+
   name: class
+  type: string
 }
 
 name: player_death
 id: 23
 keys: {
   name: userid
+  type: short
+
   name: attacker
+  type: short
+
   name: assister
+  type: short
+
   name: weapon
+  type: string
+
   name: weapon_itemid
+  type: string
+
   name: weapon_fauxitemid
+  type: string
+
   name: weapon_originalowner_xuid
+  type: string
+
   name: headshot
+  type: bool
+
   name: dominated
+  type: short
+
   name: revenge
+  type: short
+
   name: penetrated
+  type: short
 }
 
 name: player_hurt
 id: 24
 keys: {
   name: userid
+  type: short
+
   name: attacker
+  type: short
+
   name: health
+  type: byte
+
   name: armor
+  type: byte
+
   name: weapon
+  type: string
+
   name: dmg_health
+  type: short
+
   name: dmg_armor
+  type: byte
+
   name: hitgroup
+  type: byte
 }
 
 name: player_chat
 id: 25
 keys: {
   name: teamonly
+  type: bool
+
   name: userid
+  type: short
+
   name: text
+  type: string
 }
 
 name: player_score
 id: 26
 keys: {
   name: userid
+  type: short
+
   name: kills
+  type: short
+
   name: deaths
+  type: short
+
   name: score
+  type: short
 }
 
 name: player_spawn
 id: 27
 keys: {
   name: userid
+  type: short
+
   name: teamnum
+  type: short
 }
 
 name: player_shoot
 id: 28
 keys: {
   name: userid
+  type: short
+
   name: weapon
+  type: byte
+
   name: mode
+  type: byte
 }
 
 name: player_use
 id: 29
 keys: {
   name: userid
+  type: short
+
   name: entity
+  type: short
 }
 
 name: player_changename
 id: 30
 keys: {
   name: userid
+  type: short
+
   name: oldname
+  type: string
+
   name: newname
+  type: string
 }
 
 name: player_hintmessage
 id: 31
 keys: {
   name: hintmessage
+  type: string
 }
 
 name: game_init
@@ -268,29 +442,43 @@ name: game_newmap
 id: 33
 keys: {
   name: mapname
+  type: string
 }
 
 name: game_start
 id: 34
 keys: {
   name: roundslimit
+  type: long
+
   name: timelimit
+  type: long
+
   name: fraglimit
+  type: long
+
   name: objective
+  type: string
 }
 
 name: game_end
 id: 35
 keys: {
   name: winner
+  type: byte
 }
 
 name: round_start
 id: 36
 keys: {
   name: timelimit
+  type: long
+
   name: fraglimit
+  type: long
+
   name: objective
+  type: string
 }
 
 name: round_announce_match_point
@@ -322,8 +510,13 @@ name: round_end
 id: 42
 keys: {
   name: winner
+  type: byte
+
   name: reason
+  type: byte
+
   name: message
+  type: string
 }
 
 name: round_end_upload_stats
@@ -340,32 +533,41 @@ name: ugc_map_info_received
 id: 45
 keys: {
   name: published_file_id
+  type: uint64
 }
 
 name: ugc_map_unsubscribed
 id: 46
 keys: {
   name: published_file_id
+  type: uint64
 }
 
 name: ugc_map_download_error
 id: 47
 keys: {
   name: published_file_id
+  type: uint64
+
   name: error_code
+  type: long
 }
 
 name: ugc_file_download_finished
 id: 48
 keys: {
   name: hcontent
+  type: uint64
 }
 
 name: ugc_file_download_start
 id: 49
 keys: {
   name: hcontent
+  type: uint64
+
   name: published_file_id
+  type: uint64
 }
 
 name: begin_new_match
@@ -382,109 +584,162 @@ name: teamplay_round_start
 id: 52
 keys: {
   name: full_reset
+  type: bool
 }
 
 name: hostname_changed
 id: 53
 keys: {
   name: hostname
+  type: string
 }
 
 name: difficulty_changed
 id: 54
 keys: {
   name: newDifficulty
+  type: short
+
   name: oldDifficulty
+  type: short
+
   name: strDifficulty
+  type: string
 }
 
 name: finale_start
 id: 55
 keys: {
   name: rushes
+  type: short
 }
 
 name: game_message
 id: 56
 keys: {
   name: target
+  type: byte
+
   name: text
+  type: string
 }
 
 name: dm_bonus_weapon_start
 id: 57
 keys: {
   name: time
+  type: short
+
   name: wepID
+  type: short
+
   name: Pos
+  type: short
 }
 
 name: break_breakable
 id: 58
 keys: {
   name: entindex
+  type: long
+
   name: userid
+  type: short
+
   name: material
+  type: byte
 }
 
 name: break_prop
 id: 59
 keys: {
   name: entindex
+  type: long
+
   name: userid
+  type: short
 }
 
 name: player_decal
 id: 60
 keys: {
   name: userid
+  type: short
 }
 
 name: entity_killed
 id: 61
 keys: {
   name: entindex_killed
+  type: long
+
   name: entindex_attacker
+  type: long
+
   name: entindex_inflictor
+  type: long
+
   name: damagebits
+  type: long
 }
 
 name: bonus_updated
 id: 62
 keys: {
   name: numadvanced
+  type: short
+
   name: numbronze
+  type: short
+
   name: numsilver
+  type: short
+
   name: numgold
+  type: short
 }
 
 name: player_stats_updated
 id: 63
 keys: {
   name: forceupload
+  type: bool
 }
 
 name: achievement_event
 id: 64
 keys: {
   name: achievement_name
+  type: string
+
   name: cur_val
+  type: short
+
   name: max_val
+  type: short
 }
 
 name: achievement_increment
 id: 65
 keys: {
   name: achievement_id
+  type: long
+
   name: cur_val
+  type: short
+
   name: max_val
+  type: short
 }
 
 name: achievement_earned
 id: 66
 keys: {
   name: player
+  type: byte
+
   name: achievement
+  type: short
 }
 
 name: achievement_write_failed
@@ -496,12 +751,14 @@ name: physgun_pickup
 id: 68
 keys: {
   name: entindex
+  type: long
 }
 
 name: flare_ignite_npc
 id: 69
 keys: {
   name: entindex
+  type: long
 }
 
 name: helicopter_grenade_punt_miss
@@ -518,6 +775,7 @@ name: ragdoll_dissolved
 id: 72
 keys: {
   name: entindex
+  type: long
 }
 
 name: gameinstructor_draw
@@ -539,64 +797,115 @@ name: entity_visible
 id: 76
 keys: {
   name: userid
+  type: short
+
   name: subject
+  type: short
+
   name: classname
+  type: string
+
   name: entityname
+  type: string
 }
 
 name: set_instructor_group_enabled
 id: 77
 keys: {
   name: group
+  type: string
+
   name: enabled
+  type: short
 }
 
 name: instructor_server_hint_create
 id: 78
 keys: {
   name: hint_name
+  type: string
+
   name: hint_replace_key
+  type: string
+
   name: hint_target
+  type: long
+
   name: hint_activator_userid
+  type: short
+
   name: hint_timeout
+  type: short
+
   name: hint_icon_onscreen
+  type: string
+
   name: hint_icon_offscreen
+  type: string
+
   name: hint_caption
+  type: string
+
   name: hint_activator_caption
+  type: string
+
   name: hint_color
+  type: string
+
   name: hint_icon_offset
+  type: float
+
   name: hint_range
+  type: float
+
   name: hint_flags
+  type: long
+
   name: hint_binding
+  type: string
+
   name: hint_gamepad_binding
+  type: string
+
   name: hint_allow_nodraw_target
+  type: bool
+
   name: hint_nooffscreen
+  type: bool
+
   name: hint_forcecaption
+  type: bool
+
   name: hint_local_player_only
+  type: bool
 }
 
 name: instructor_server_hint_stop
 id: 79
 keys: {
   name: hint_name
+  type: string
 }
 
 name: read_game_titledata
 id: 80
 keys: {
   name: controllerId
+  type: short
 }
 
 name: write_game_titledata
 id: 81
 keys: {
   name: controllerId
+  type: short
 }
 
 name: reset_game_titledata
 id: 82
 keys: {
   name: controllerId
+  type: short
 }
 
 name: weapon_reload_database
@@ -613,69 +922,130 @@ name: vote_started
 id: 85
 keys: {
   name: issue
+  type: string
+
   name: param1
+  type: string
+
   name: team
+  type: byte
+
   name: initiator
+  type: long
 }
 
 name: vote_changed
 id: 86
 keys: {
   name: vote_option1
+  type: byte
+
   name: vote_option2
+  type: byte
+
   name: vote_option3
+  type: byte
+
   name: vote_option4
+  type: byte
+
   name: vote_option5
+  type: byte
+
   name: potentialVotes
+  type: byte
 }
 
 name: vote_passed
 id: 87
 keys: {
   name: details
+  type: string
+
   name: param1
+  type: string
+
   name: team
+  type: byte
 }
 
 name: vote_failed
 id: 88
 keys: {
   name: team
+  type: byte
 }
 
 name: vote_cast
 id: 89
 keys: {
   name: vote_option
+  type: byte
+
   name: team
+  type: short
+
   name: entityid
+  type: long
 }
 
 name: vote_options
 id: 90
 keys: {
   name: count
+  type: byte
+
   name: option1
+  type: string
+
   name: option2
+  type: string
+
   name: option3
+  type: string
+
   name: option4
+  type: string
+
   name: option5
+  type: string
 }
 
 name: endmatch_mapvote_selecting_map
 id: 91
 keys: {
   name: count
+  type: byte
+
   name: slot1
+  type: byte
+
   name: slot2
+  type: byte
+
   name: slot3
+  type: byte
+
   name: slot4
+  type: byte
+
   name: slot5
+  type: byte
+
   name: slot6
+  type: byte
+
   name: slot7
+  type: byte
+
   name: slot8
+  type: byte
+
   name: slot9
+  type: byte
+
   name: slot10
+  type: byte
 }
 
 name: endmatch_cmm_start_reveal_items
@@ -717,83 +1087,128 @@ name: other_death
 id: 99
 keys: {
   name: otherid
+  type: short
+
   name: othertype
+  type: string
+
   name: attacker
+  type: short
+
   name: weapon
+  type: string
+
   name: weapon_itemid
+  type: string
+
   name: weapon_fauxitemid
+  type: string
+
   name: weapon_originalowner_xuid
+  type: string
+
   name: headshot
+  type: bool
+
   name: penetrated
+  type: short
 }
 
 name: item_purchase
 id: 100
 keys: {
   name: userid
+  type: short
+
   name: team
+  type: short
+
   name: weapon
+  type: string
 }
 
 name: bomb_beginplant
 id: 101
 keys: {
   name: userid
+  type: short
+
   name: site
+  type: short
 }
 
 name: bomb_abortplant
 id: 102
 keys: {
   name: userid
+  type: short
+
   name: site
+  type: short
 }
 
 name: bomb_planted
 id: 103
 keys: {
   name: userid
+  type: short
+
   name: site
+  type: short
 }
 
 name: bomb_defused
 id: 104
 keys: {
   name: userid
+  type: short
+
   name: site
+  type: short
 }
 
 name: bomb_exploded
 id: 105
 keys: {
   name: userid
+  type: short
+
   name: site
+  type: short
 }
 
 name: bomb_dropped
 id: 106
 keys: {
   name: userid
+  type: short
+
   name: entindex
+  type: long
 }
 
 name: bomb_pickup
 id: 107
 keys: {
   name: userid
+  type: short
 }
 
 name: defuser_dropped
 id: 108
 keys: {
   name: entityid
+  type: long
 }
 
 name: defuser_pickup
 id: 109
 keys: {
   name: entityid
+  type: long
+
   name: userid
+  type: short
 }
 
 name: announce_phase_end
@@ -810,49 +1225,70 @@ name: bomb_begindefuse
 id: 112
 keys: {
   name: userid
+  type: short
+
   name: haskit
+  type: bool
 }
 
 name: bomb_abortdefuse
 id: 113
 keys: {
   name: userid
+  type: short
 }
 
 name: hostage_follows
 id: 114
 keys: {
   name: userid
+  type: short
+
   name: hostage
+  type: short
 }
 
 name: hostage_hurt
 id: 115
 keys: {
   name: userid
+  type: short
+
   name: hostage
+  type: short
 }
 
 name: hostage_killed
 id: 116
 keys: {
   name: userid
+  type: short
+
   name: hostage
+  type: short
 }
 
 name: hostage_rescued
 id: 117
 keys: {
   name: userid
+  type: short
+
   name: hostage
+  type: short
+
   name: site
+  type: short
 }
 
 name: hostage_stops_following
 id: 118
 keys: {
   name: userid
+  type: short
+
   name: hostage
+  type: short
 }
 
 name: hostage_rescued_all
@@ -864,133 +1300,190 @@ name: hostage_call_for_help
 id: 120
 keys: {
   name: hostage
+  type: short
 }
 
 name: vip_escaped
 id: 121
 keys: {
   name: userid
+  type: short
 }
 
 name: vip_killed
 id: 122
 keys: {
   name: userid
+  type: short
+
   name: attacker
+  type: short
 }
 
 name: player_radio
 id: 123
 keys: {
   name: userid
+  type: short
+
   name: slot
+  type: short
 }
 
 name: bomb_beep
 id: 124
 keys: {
   name: entindex
+  type: long
 }
 
 name: weapon_fire
 id: 125
 keys: {
   name: userid
+  type: short
+
   name: weapon
+  type: string
+
   name: silenced
+  type: bool
 }
 
 name: weapon_fire_on_empty
 id: 126
 keys: {
   name: userid
+  type: short
+
   name: weapon
+  type: string
 }
 
 name: weapon_outofammo
 id: 127
 keys: {
   name: userid
+  type: short
 }
 
 name: weapon_reload
 id: 128
 keys: {
   name: userid
+  type: short
 }
 
 name: weapon_zoom
 id: 129
 keys: {
   name: userid
+  type: short
 }
 
 name: silencer_detach
 id: 130
 keys: {
   name: userid
+  type: short
 }
 
 name: inspect_weapon
 id: 131
 keys: {
   name: userid
+  type: short
 }
 
 name: weapon_zoom_rifle
 id: 132
 keys: {
   name: userid
+  type: short
 }
 
 name: player_spawned
 id: 133
 keys: {
   name: userid
+  type: short
+
   name: inrestart
+  type: bool
 }
 
 name: item_pickup
 id: 134
 keys: {
   name: userid
+  type: short
+
   name: item
+  type: string
+
   name: silent
+  type: bool
 }
 
 name: ammo_pickup
 id: 135
 keys: {
   name: userid
+  type: short
+
   name: item
+  type: string
+
   name: index
+  type: long
 }
 
 name: item_equip
 id: 136
 keys: {
   name: userid
+  type: short
+
   name: item
+  type: string
+
   name: canzoom
+  type: bool
+
   name: hassilencer
+  type: bool
+
   name: issilenced
+  type: bool
+
   name: hastracers
+  type: bool
+
   name: weptype
+  type: short
+
   name: ispainted
+  type: bool
 }
 
 name: enter_buyzone
 id: 137
 keys: {
   name: userid
+  type: short
+
   name: canbuy
+  type: bool
 }
 
 name: exit_buyzone
 id: 138
 keys: {
   name: userid
+  type: short
+
   name: canbuy
+  type: bool
 }
 
 name: buytime_ended
@@ -1002,52 +1495,68 @@ name: enter_bombzone
 id: 140
 keys: {
   name: userid
+  type: short
+
   name: hasbomb
+  type: bool
+
   name: isplanted
+  type: bool
 }
 
 name: exit_bombzone
 id: 141
 keys: {
   name: userid
+  type: short
+
   name: hasbomb
+  type: bool
+
   name: isplanted
+  type: bool
 }
 
 name: enter_rescue_zone
 id: 142
 keys: {
   name: userid
+  type: short
 }
 
 name: exit_rescue_zone
 id: 143
 keys: {
   name: userid
+  type: short
 }
 
 name: silencer_off
 id: 144
 keys: {
   name: userid
+  type: short
 }
 
 name: silencer_on
 id: 145
 keys: {
   name: userid
+  type: short
 }
 
 name: buymenu_open
 id: 146
 keys: {
   name: userid
+  type: short
 }
 
 name: buymenu_close
 id: 147
 keys: {
   name: userid
+  type: short
 }
 
 name: round_prestart
@@ -1064,153 +1573,261 @@ name: grenade_bounce
 id: 150
 keys: {
   name: userid
+  type: short
 }
 
 name: hegrenade_detonate
 id: 151
 keys: {
   name: userid
+  type: short
+
   name: entityid
+  type: short
+
   name: x
+  type: float
+
   name: y
+  type: float
+
   name: z
+  type: float
 }
 
 name: flashbang_detonate
 id: 152
 keys: {
   name: userid
+  type: short
+
   name: entityid
+  type: short
+
   name: x
+  type: float
+
   name: y
+  type: float
+
   name: z
+  type: float
 }
 
 name: smokegrenade_detonate
 id: 153
 keys: {
   name: userid
+  type: short
+
   name: entityid
+  type: short
+
   name: x
+  type: float
+
   name: y
+  type: float
+
   name: z
+  type: float
 }
 
 name: smokegrenade_expired
 id: 154
 keys: {
   name: userid
+  type: short
+
   name: entityid
+  type: short
+
   name: x
+  type: float
+
   name: y
+  type: float
+
   name: z
+  type: float
 }
 
 name: molotov_detonate
 id: 155
 keys: {
   name: userid
+  type: short
+
   name: x
+  type: float
+
   name: y
+  type: float
+
   name: z
+  type: float
 }
 
 name: decoy_detonate
 id: 156
 keys: {
   name: userid
+  type: short
+
   name: entityid
+  type: short
+
   name: x
+  type: float
+
   name: y
+  type: float
+
   name: z
+  type: float
 }
 
 name: decoy_started
 id: 157
 keys: {
   name: userid
+  type: short
+
   name: entityid
+  type: short
+
   name: x
+  type: float
+
   name: y
+  type: float
+
   name: z
+  type: float
 }
 
 name: inferno_startburn
 id: 158
 keys: {
   name: entityid
+  type: short
+
   name: x
+  type: float
+
   name: y
+  type: float
+
   name: z
+  type: float
 }
 
 name: inferno_expire
 id: 159
 keys: {
   name: entityid
+  type: short
+
   name: x
+  type: float
+
   name: y
+  type: float
+
   name: z
+  type: float
 }
 
 name: inferno_extinguish
 id: 160
 keys: {
   name: entityid
+  type: short
+
   name: x
+  type: float
+
   name: y
+  type: float
+
   name: z
+  type: float
 }
 
 name: decoy_firing
 id: 161
 keys: {
   name: userid
+  type: short
+
   name: entityid
+  type: short
+
   name: x
+  type: float
+
   name: y
+  type: float
+
   name: z
+  type: float
 }
 
 name: bullet_impact
 id: 162
 keys: {
   name: userid
+  type: short
+
   name: x
+  type: float
+
   name: y
+  type: float
+
   name: z
+  type: float
 }
 
 name: player_footstep
 id: 163
 keys: {
   name: userid
+  type: short
 }
 
 name: player_jump
 id: 164
 keys: {
   name: userid
+  type: short
 }
 
 name: player_blind
 id: 165
 keys: {
   name: userid
+  type: short
 }
 
 name: player_falldamage
 id: 166
 keys: {
   name: userid
+  type: short
+
   name: damage
+  type: float
 }
 
 name: door_moving
 id: 167
 keys: {
   name: entindex
+  type: long
+
   name: userid
+  type: short
 }
 
 name: round_freeze_end
@@ -1232,7 +1849,10 @@ name: nav_blocked
 id: 171
 keys: {
   name: area
+  type: long
+
   name: blocked
+  type: bool
 }
 
 name: nav_generate
@@ -1249,20 +1869,27 @@ name: spec_target_updated
 id: 174
 keys: {
   name: userid
+  type: byte
 }
 
 name: spec_mode_updated
 id: 175
 keys: {
   name: userid
+  type: byte
 }
 
 name: hltv_changed_mode
 id: 176
 keys: {
   name: oldmode
+  type: long
+
   name: newmode
+  type: long
+
   name: obs_target
+  type: long
 }
 
 name: cs_game_disconnected
@@ -1274,14 +1901,31 @@ name: cs_win_panel_round
 id: 178
 keys: {
   name: show_timer_defend
+  type: bool
+
   name: show_timer_attack
+  type: bool
+
   name: timer_time
+  type: short
+
   name: final_event
+  type: byte
+
   name: funfact_token
+  type: string
+
   name: funfact_player
+  type: short
+
   name: funfact_data1
+  type: long
+
   name: funfact_data2
+  type: long
+
   name: funfact_data3
+  type: long
 }
 
 name: cs_win_panel_match
@@ -1303,11 +1947,22 @@ name: show_freezepanel
 id: 182
 keys: {
   name: victim
+  type: short
+
   name: killer
+  type: short
+
   name: hits_taken
+  type: short
+
   name: damage_taken
+  type: short
+
   name: hits_given
+  type: short
+
   name: damage_given
+  type: short
 }
 
 name: hide_freezepanel
@@ -1324,46 +1979,72 @@ name: player_avenged_teammate
 id: 185
 keys: {
   name: avenger_id
+  type: short
+
   name: avenged_player_id
+  type: short
 }
 
 name: achievement_earned_local
 id: 186
 keys: {
   name: achievement
+  type: short
+
   name: splitscreenplayer
+  type: short
 }
 
 name: item_found
 id: 187
 keys: {
   name: player
+  type: byte
+
   name: quality
+  type: byte
+
   name: method
+  type: byte
+
   name: itemdef
+  type: long
+
   name: itemid
+  type: long
 }
 
 name: repost_xbox_achievements
 id: 188
 keys: {
   name: splitscreenplayer
+  type: short
 }
 
 name: match_end_conditions
 id: 189
 keys: {
   name: frags
+  type: long
+
   name: max_rounds
+  type: long
+
   name: win_rounds
+  type: long
+
   name: time
+  type: long
 }
 
 name: round_mvp
 id: 190
 keys: {
   name: userid
+  type: short
+
   name: reason
+  type: short
 }
 
 name: client_disconnect
@@ -1375,81 +2056,122 @@ name: gg_player_levelup
 id: 192
 keys: {
   name: userid
+  type: short
+
   name: weaponrank
+  type: short
+
   name: weaponname
+  type: string
 }
 
 name: ggtr_player_levelup
 id: 193
 keys: {
   name: userid
+  type: short
+
   name: weaponrank
+  type: short
+
   name: weaponname
+  type: string
 }
 
 name: assassination_target_killed
 id: 194
 keys: {
   name: target
+  type: short
+
   name: killer
+  type: short
 }
 
 name: ggprogressive_player_levelup
 id: 195
 keys: {
   name: userid
+  type: short
+
   name: weaponrank
+  type: short
+
   name: weaponname
+  type: string
 }
 
 name: gg_killed_enemy
 id: 196
 keys: {
   name: victimid
+  type: short
+
   name: attackerid
+  type: short
+
   name: dominated
+  type: short
+
   name: revenge
+  type: short
+
   name: bonus
+  type: bool
 }
 
 name: gg_final_weapon_achieved
 id: 197
 keys: {
   name: playerid
+  type: short
 }
 
 name: gg_bonus_grenade_achieved
 id: 198
 keys: {
   name: userid
+  type: short
 }
 
 name: switch_team
 id: 199
 keys: {
   name: numPlayers
+  type: short
+
   name: numSpectators
+  type: short
+
   name: avg_rank
+  type: short
+
   name: numTSlotsFree
+  type: short
+
   name: numCTSlotsFree
+  type: short
 }
 
 name: gg_leader
 id: 200
 keys: {
   name: playerid
+  type: short
 }
 
 name: gg_team_leader
 id: 201
 keys: {
   name: playerid
+  type: short
 }
 
 name: gg_player_impending_upgrade
 id: 202
 keys: {
   name: userid
+  type: short
 }
 
 name: write_profile_data
@@ -1461,6 +2183,7 @@ name: trial_time_expired
 id: 204
 keys: {
   name: slot
+  type: short
 }
 
 name: update_matchmaking_stats
@@ -1472,59 +2195,78 @@ name: player_reset_vote
 id: 206
 keys: {
   name: userid
+  type: short
+
   name: vote
+  type: bool
 }
 
 name: enable_restart_voting
 id: 207
 keys: {
   name: enable
+  type: bool
 }
 
 name: sfuievent
 id: 208
 keys: {
   name: action
+  type: string
+
   name: data
+  type: string
+
   name: slot
+  type: byte
 }
 
 name: start_vote
 id: 209
 keys: {
   name: userid
+  type: short
+
   name: type
+  type: byte
+
   name: vote_parameter
+  type: short
 }
 
 name: player_given_c4
 id: 210
 keys: {
   name: userid
+  type: short
 }
 
 name: gg_reset_round_start_sounds
 id: 211
 keys: {
   name: userid
+  type: short
 }
 
 name: tr_player_flashbanged
 id: 212
 keys: {
   name: userid
+  type: short
 }
 
 name: tr_mark_complete
 id: 213
 keys: {
   name: complete
+  type: short
 }
 
 name: tr_mark_best_time
 id: 214
 keys: {
   name: time
+  type: long
 }
 
 name: tr_exit_hint_trigger
@@ -1536,20 +2278,27 @@ name: bot_takeover
 id: 216
 keys: {
   name: userid
+  type: short
+
   name: botid
+  type: short
+
   name: index
+  type: short
 }
 
 name: tr_show_finish_msgbox
 id: 217
 keys: {
   name: userid
+  type: short
 }
 
 name: tr_show_exit_msgbox
 id: 218
 keys: {
   name: userid
+  type: short
 }
 
 name: reset_player_controls
@@ -1561,14 +2310,20 @@ name: jointeam_failed
 id: 220
 keys: {
   name: userid
+  type: short
+
   name: reason
+  type: byte
 }
 
 name: teamchange_pending
 id: 221
 keys: {
   name: userid
+  type: short
+
   name: toteam
+  type: byte
 }
 
 name: material_default_complete
@@ -1580,28 +2335,40 @@ name: cs_prev_next_spectator
 id: 223
 keys: {
   name: next
+  type: bool
 }
 
 name: nextlevel_changed
 id: 224
 keys: {
   name: nextlevel
+  type: string
 }
 
 name: seasoncoin_levelup
 id: 225
 keys: {
   name: player
+  type: short
+
   name: category
+  type: short
+
   name: rank
+  type: short
 }
 
 name: tournament_reward
 id: 226
 keys: {
   name: defindex
+  type: long
+
   name: totalrewards
+  type: long
+
   name: accountid
+  type: long
 }
 
 name: start_halftime
@@ -1613,83 +2380,140 @@ name: hltv_status
 id: 228
 keys: {
   name: clients
+  type: long
+
   name: slots
+  type: long
+
   name: proxies
+  type: short
+
   name: master
+  type: string
+
   name: externaltotal
+  type: long
+
   name: externallinked
+  type: long
 }
 
 name: hltv_cameraman
 id: 229
 keys: {
   name: index
+  type: short
 }
 
 name: hltv_rank_camera
 id: 230
 keys: {
   name: index
+  type: byte
+
   name: rank
+  type: float
+
   name: target
+  type: short
 }
 
 name: hltv_rank_entity
 id: 231
 keys: {
   name: index
+  type: short
+
   name: rank
+  type: float
+
   name: target
+  type: short
 }
 
 name: hltv_fixed
 id: 232
 keys: {
   name: posx
+  type: long
+
   name: posy
+  type: long
+
   name: posz
+  type: long
+
   name: theta
+  type: short
+
   name: phi
+  type: short
+
   name: offset
+  type: short
+
   name: fov
+  type: float
+
   name: target
+  type: short
 }
 
 name: hltv_chase
 id: 233
 keys: {
   name: target1
+  type: short
+
   name: target2
+  type: short
+
   name: distance
+  type: short
+
   name: theta
+  type: short
+
   name: phi
+  type: short
+
   name: inertia
+  type: byte
+
   name: ineye
+  type: byte
 }
 
 name: hltv_message
 id: 234
 keys: {
   name: text
+  type: string
 }
 
 name: hltv_title
 id: 235
 keys: {
   name: text
+  type: string
 }
 
 name: hltv_chat
 id: 236
 keys: {
   name: text
+  type: string
 }
 
 name: hltv_changed_target
 id: 237
 keys: {
   name: mode
-  name: old_target
-  name: obs_target
-}
+  type: long
 
+  name: old_target
+  type: long
+
+  name: obs_target
+  type: long
+}

@@ -1,0 +1,1695 @@
+name: server_spawn
+id: 0
+keys: {
+  name: hostname
+  name: address
+  name: port
+  name: game
+  name: mapname
+  name: maxplayers
+  name: os
+  name: dedicated
+  name: official
+  name: password
+}
+
+name: server_pre_shutdown
+id: 1
+keys: {
+  name: reason
+}
+
+name: server_shutdown
+id: 2
+keys: {
+  name: reason
+}
+
+name: server_cvar
+id: 3
+keys: {
+  name: cvarname
+  name: cvarvalue
+}
+
+name: server_message
+id: 4
+keys: {
+  name: text
+}
+
+name: server_addban
+id: 5
+keys: {
+  name: name
+  name: userid
+  name: networkid
+  name: ip
+  name: duration
+  name: by
+  name: kicked
+}
+
+name: server_removeban
+id: 6
+keys: {
+  name: networkid
+  name: ip
+  name: by
+}
+
+name: player_connect
+id: 7
+keys: {
+  name: name
+  name: index
+  name: userid
+  name: networkid
+  name: address
+}
+
+name: player_info
+id: 8
+keys: {
+  name: name
+  name: index
+  name: userid
+  name: networkid
+  name: bot
+}
+
+name: player_disconnect
+id: 9
+keys: {
+  name: userid
+  name: reason
+  name: name
+  name: networkid
+}
+
+name: player_activate
+id: 10
+keys: {
+  name: userid
+}
+
+name: player_connect_full
+id: 11
+keys: {
+  name: userid
+  name: index
+}
+
+name: player_say
+id: 12
+keys: {
+  name: userid
+  name: text
+}
+
+name: cs_round_start_beep
+id: 13
+keys: {
+}
+
+name: cs_round_final_beep
+id: 14
+keys: {
+}
+
+name: round_time_warning
+id: 15
+keys: {
+}
+
+name: team_info
+id: 16
+keys: {
+  name: teamid
+  name: teamname
+}
+
+name: team_score
+id: 17
+keys: {
+  name: teamid
+  name: score
+}
+
+name: teamplay_broadcast_audio
+id: 18
+keys: {
+  name: team
+  name: sound
+}
+
+name: gameui_hidden
+id: 19
+keys: {
+}
+
+name: items_gifted
+id: 20
+keys: {
+  name: player
+  name: itemdef
+  name: numgifts
+  name: giftidx
+  name: accountid
+}
+
+name: player_team
+id: 21
+keys: {
+  name: userid
+  name: team
+  name: oldteam
+  name: disconnect
+  name: autoteam
+  name: silent
+  name: isbot
+}
+
+name: player_class
+id: 22
+keys: {
+  name: userid
+  name: class
+}
+
+name: player_death
+id: 23
+keys: {
+  name: userid
+  name: attacker
+  name: assister
+  name: weapon
+  name: weapon_itemid
+  name: weapon_fauxitemid
+  name: weapon_originalowner_xuid
+  name: headshot
+  name: dominated
+  name: revenge
+  name: penetrated
+}
+
+name: player_hurt
+id: 24
+keys: {
+  name: userid
+  name: attacker
+  name: health
+  name: armor
+  name: weapon
+  name: dmg_health
+  name: dmg_armor
+  name: hitgroup
+}
+
+name: player_chat
+id: 25
+keys: {
+  name: teamonly
+  name: userid
+  name: text
+}
+
+name: player_score
+id: 26
+keys: {
+  name: userid
+  name: kills
+  name: deaths
+  name: score
+}
+
+name: player_spawn
+id: 27
+keys: {
+  name: userid
+  name: teamnum
+}
+
+name: player_shoot
+id: 28
+keys: {
+  name: userid
+  name: weapon
+  name: mode
+}
+
+name: player_use
+id: 29
+keys: {
+  name: userid
+  name: entity
+}
+
+name: player_changename
+id: 30
+keys: {
+  name: userid
+  name: oldname
+  name: newname
+}
+
+name: player_hintmessage
+id: 31
+keys: {
+  name: hintmessage
+}
+
+name: game_init
+id: 32
+keys: {
+}
+
+name: game_newmap
+id: 33
+keys: {
+  name: mapname
+}
+
+name: game_start
+id: 34
+keys: {
+  name: roundslimit
+  name: timelimit
+  name: fraglimit
+  name: objective
+}
+
+name: game_end
+id: 35
+keys: {
+  name: winner
+}
+
+name: round_start
+id: 36
+keys: {
+  name: timelimit
+  name: fraglimit
+  name: objective
+}
+
+name: round_announce_match_point
+id: 37
+keys: {
+}
+
+name: round_announce_final
+id: 38
+keys: {
+}
+
+name: round_announce_last_round_half
+id: 39
+keys: {
+}
+
+name: round_announce_match_start
+id: 40
+keys: {
+}
+
+name: round_announce_warmup
+id: 41
+keys: {
+}
+
+name: round_end
+id: 42
+keys: {
+  name: winner
+  name: reason
+  name: message
+}
+
+name: round_end_upload_stats
+id: 43
+keys: {
+}
+
+name: round_officially_ended
+id: 44
+keys: {
+}
+
+name: ugc_map_info_received
+id: 45
+keys: {
+  name: published_file_id
+}
+
+name: ugc_map_unsubscribed
+id: 46
+keys: {
+  name: published_file_id
+}
+
+name: ugc_map_download_error
+id: 47
+keys: {
+  name: published_file_id
+  name: error_code
+}
+
+name: ugc_file_download_finished
+id: 48
+keys: {
+  name: hcontent
+}
+
+name: ugc_file_download_start
+id: 49
+keys: {
+  name: hcontent
+  name: published_file_id
+}
+
+name: begin_new_match
+id: 50
+keys: {
+}
+
+name: round_start_pre_entity
+id: 51
+keys: {
+}
+
+name: teamplay_round_start
+id: 52
+keys: {
+  name: full_reset
+}
+
+name: hostname_changed
+id: 53
+keys: {
+  name: hostname
+}
+
+name: difficulty_changed
+id: 54
+keys: {
+  name: newDifficulty
+  name: oldDifficulty
+  name: strDifficulty
+}
+
+name: finale_start
+id: 55
+keys: {
+  name: rushes
+}
+
+name: game_message
+id: 56
+keys: {
+  name: target
+  name: text
+}
+
+name: dm_bonus_weapon_start
+id: 57
+keys: {
+  name: time
+  name: wepID
+  name: Pos
+}
+
+name: break_breakable
+id: 58
+keys: {
+  name: entindex
+  name: userid
+  name: material
+}
+
+name: break_prop
+id: 59
+keys: {
+  name: entindex
+  name: userid
+}
+
+name: player_decal
+id: 60
+keys: {
+  name: userid
+}
+
+name: entity_killed
+id: 61
+keys: {
+  name: entindex_killed
+  name: entindex_attacker
+  name: entindex_inflictor
+  name: damagebits
+}
+
+name: bonus_updated
+id: 62
+keys: {
+  name: numadvanced
+  name: numbronze
+  name: numsilver
+  name: numgold
+}
+
+name: player_stats_updated
+id: 63
+keys: {
+  name: forceupload
+}
+
+name: achievement_event
+id: 64
+keys: {
+  name: achievement_name
+  name: cur_val
+  name: max_val
+}
+
+name: achievement_increment
+id: 65
+keys: {
+  name: achievement_id
+  name: cur_val
+  name: max_val
+}
+
+name: achievement_earned
+id: 66
+keys: {
+  name: player
+  name: achievement
+}
+
+name: achievement_write_failed
+id: 67
+keys: {
+}
+
+name: physgun_pickup
+id: 68
+keys: {
+  name: entindex
+}
+
+name: flare_ignite_npc
+id: 69
+keys: {
+  name: entindex
+}
+
+name: helicopter_grenade_punt_miss
+id: 70
+keys: {
+}
+
+name: user_data_downloaded
+id: 71
+keys: {
+}
+
+name: ragdoll_dissolved
+id: 72
+keys: {
+  name: entindex
+}
+
+name: gameinstructor_draw
+id: 73
+keys: {
+}
+
+name: gameinstructor_nodraw
+id: 74
+keys: {
+}
+
+name: map_transition
+id: 75
+keys: {
+}
+
+name: entity_visible
+id: 76
+keys: {
+  name: userid
+  name: subject
+  name: classname
+  name: entityname
+}
+
+name: set_instructor_group_enabled
+id: 77
+keys: {
+  name: group
+  name: enabled
+}
+
+name: instructor_server_hint_create
+id: 78
+keys: {
+  name: hint_name
+  name: hint_replace_key
+  name: hint_target
+  name: hint_activator_userid
+  name: hint_timeout
+  name: hint_icon_onscreen
+  name: hint_icon_offscreen
+  name: hint_caption
+  name: hint_activator_caption
+  name: hint_color
+  name: hint_icon_offset
+  name: hint_range
+  name: hint_flags
+  name: hint_binding
+  name: hint_gamepad_binding
+  name: hint_allow_nodraw_target
+  name: hint_nooffscreen
+  name: hint_forcecaption
+  name: hint_local_player_only
+}
+
+name: instructor_server_hint_stop
+id: 79
+keys: {
+  name: hint_name
+}
+
+name: read_game_titledata
+id: 80
+keys: {
+  name: controllerId
+}
+
+name: write_game_titledata
+id: 81
+keys: {
+  name: controllerId
+}
+
+name: reset_game_titledata
+id: 82
+keys: {
+  name: controllerId
+}
+
+name: weapon_reload_database
+id: 83
+keys: {
+}
+
+name: vote_ended
+id: 84
+keys: {
+}
+
+name: vote_started
+id: 85
+keys: {
+  name: issue
+  name: param1
+  name: team
+  name: initiator
+}
+
+name: vote_changed
+id: 86
+keys: {
+  name: vote_option1
+  name: vote_option2
+  name: vote_option3
+  name: vote_option4
+  name: vote_option5
+  name: potentialVotes
+}
+
+name: vote_passed
+id: 87
+keys: {
+  name: details
+  name: param1
+  name: team
+}
+
+name: vote_failed
+id: 88
+keys: {
+  name: team
+}
+
+name: vote_cast
+id: 89
+keys: {
+  name: vote_option
+  name: team
+  name: entityid
+}
+
+name: vote_options
+id: 90
+keys: {
+  name: count
+  name: option1
+  name: option2
+  name: option3
+  name: option4
+  name: option5
+}
+
+name: endmatch_mapvote_selecting_map
+id: 91
+keys: {
+  name: count
+  name: slot1
+  name: slot2
+  name: slot3
+  name: slot4
+  name: slot5
+  name: slot6
+  name: slot7
+  name: slot8
+  name: slot9
+  name: slot10
+}
+
+name: endmatch_cmm_start_reveal_items
+id: 92
+keys: {
+}
+
+name: inventory_updated
+id: 93
+keys: {
+}
+
+name: cart_updated
+id: 94
+keys: {
+}
+
+name: store_pricesheet_updated
+id: 95
+keys: {
+}
+
+name: gc_connected
+id: 96
+keys: {
+}
+
+name: item_schema_initialized
+id: 97
+keys: {
+}
+
+name: client_loadout_changed
+id: 98
+keys: {
+}
+
+name: other_death
+id: 99
+keys: {
+  name: otherid
+  name: othertype
+  name: attacker
+  name: weapon
+  name: weapon_itemid
+  name: weapon_fauxitemid
+  name: weapon_originalowner_xuid
+  name: headshot
+  name: penetrated
+}
+
+name: item_purchase
+id: 100
+keys: {
+  name: userid
+  name: team
+  name: weapon
+}
+
+name: bomb_beginplant
+id: 101
+keys: {
+  name: userid
+  name: site
+}
+
+name: bomb_abortplant
+id: 102
+keys: {
+  name: userid
+  name: site
+}
+
+name: bomb_planted
+id: 103
+keys: {
+  name: userid
+  name: site
+}
+
+name: bomb_defused
+id: 104
+keys: {
+  name: userid
+  name: site
+}
+
+name: bomb_exploded
+id: 105
+keys: {
+  name: userid
+  name: site
+}
+
+name: bomb_dropped
+id: 106
+keys: {
+  name: userid
+  name: entindex
+}
+
+name: bomb_pickup
+id: 107
+keys: {
+  name: userid
+}
+
+name: defuser_dropped
+id: 108
+keys: {
+  name: entityid
+}
+
+name: defuser_pickup
+id: 109
+keys: {
+  name: entityid
+  name: userid
+}
+
+name: announce_phase_end
+id: 110
+keys: {
+}
+
+name: cs_intermission
+id: 111
+keys: {
+}
+
+name: bomb_begindefuse
+id: 112
+keys: {
+  name: userid
+  name: haskit
+}
+
+name: bomb_abortdefuse
+id: 113
+keys: {
+  name: userid
+}
+
+name: hostage_follows
+id: 114
+keys: {
+  name: userid
+  name: hostage
+}
+
+name: hostage_hurt
+id: 115
+keys: {
+  name: userid
+  name: hostage
+}
+
+name: hostage_killed
+id: 116
+keys: {
+  name: userid
+  name: hostage
+}
+
+name: hostage_rescued
+id: 117
+keys: {
+  name: userid
+  name: hostage
+  name: site
+}
+
+name: hostage_stops_following
+id: 118
+keys: {
+  name: userid
+  name: hostage
+}
+
+name: hostage_rescued_all
+id: 119
+keys: {
+}
+
+name: hostage_call_for_help
+id: 120
+keys: {
+  name: hostage
+}
+
+name: vip_escaped
+id: 121
+keys: {
+  name: userid
+}
+
+name: vip_killed
+id: 122
+keys: {
+  name: userid
+  name: attacker
+}
+
+name: player_radio
+id: 123
+keys: {
+  name: userid
+  name: slot
+}
+
+name: bomb_beep
+id: 124
+keys: {
+  name: entindex
+}
+
+name: weapon_fire
+id: 125
+keys: {
+  name: userid
+  name: weapon
+  name: silenced
+}
+
+name: weapon_fire_on_empty
+id: 126
+keys: {
+  name: userid
+  name: weapon
+}
+
+name: weapon_outofammo
+id: 127
+keys: {
+  name: userid
+}
+
+name: weapon_reload
+id: 128
+keys: {
+  name: userid
+}
+
+name: weapon_zoom
+id: 129
+keys: {
+  name: userid
+}
+
+name: silencer_detach
+id: 130
+keys: {
+  name: userid
+}
+
+name: inspect_weapon
+id: 131
+keys: {
+  name: userid
+}
+
+name: weapon_zoom_rifle
+id: 132
+keys: {
+  name: userid
+}
+
+name: player_spawned
+id: 133
+keys: {
+  name: userid
+  name: inrestart
+}
+
+name: item_pickup
+id: 134
+keys: {
+  name: userid
+  name: item
+  name: silent
+}
+
+name: ammo_pickup
+id: 135
+keys: {
+  name: userid
+  name: item
+  name: index
+}
+
+name: item_equip
+id: 136
+keys: {
+  name: userid
+  name: item
+  name: canzoom
+  name: hassilencer
+  name: issilenced
+  name: hastracers
+  name: weptype
+  name: ispainted
+}
+
+name: enter_buyzone
+id: 137
+keys: {
+  name: userid
+  name: canbuy
+}
+
+name: exit_buyzone
+id: 138
+keys: {
+  name: userid
+  name: canbuy
+}
+
+name: buytime_ended
+id: 139
+keys: {
+}
+
+name: enter_bombzone
+id: 140
+keys: {
+  name: userid
+  name: hasbomb
+  name: isplanted
+}
+
+name: exit_bombzone
+id: 141
+keys: {
+  name: userid
+  name: hasbomb
+  name: isplanted
+}
+
+name: enter_rescue_zone
+id: 142
+keys: {
+  name: userid
+}
+
+name: exit_rescue_zone
+id: 143
+keys: {
+  name: userid
+}
+
+name: silencer_off
+id: 144
+keys: {
+  name: userid
+}
+
+name: silencer_on
+id: 145
+keys: {
+  name: userid
+}
+
+name: buymenu_open
+id: 146
+keys: {
+  name: userid
+}
+
+name: buymenu_close
+id: 147
+keys: {
+  name: userid
+}
+
+name: round_prestart
+id: 148
+keys: {
+}
+
+name: round_poststart
+id: 149
+keys: {
+}
+
+name: grenade_bounce
+id: 150
+keys: {
+  name: userid
+}
+
+name: hegrenade_detonate
+id: 151
+keys: {
+  name: userid
+  name: entityid
+  name: x
+  name: y
+  name: z
+}
+
+name: flashbang_detonate
+id: 152
+keys: {
+  name: userid
+  name: entityid
+  name: x
+  name: y
+  name: z
+}
+
+name: smokegrenade_detonate
+id: 153
+keys: {
+  name: userid
+  name: entityid
+  name: x
+  name: y
+  name: z
+}
+
+name: smokegrenade_expired
+id: 154
+keys: {
+  name: userid
+  name: entityid
+  name: x
+  name: y
+  name: z
+}
+
+name: molotov_detonate
+id: 155
+keys: {
+  name: userid
+  name: x
+  name: y
+  name: z
+}
+
+name: decoy_detonate
+id: 156
+keys: {
+  name: userid
+  name: entityid
+  name: x
+  name: y
+  name: z
+}
+
+name: decoy_started
+id: 157
+keys: {
+  name: userid
+  name: entityid
+  name: x
+  name: y
+  name: z
+}
+
+name: inferno_startburn
+id: 158
+keys: {
+  name: entityid
+  name: x
+  name: y
+  name: z
+}
+
+name: inferno_expire
+id: 159
+keys: {
+  name: entityid
+  name: x
+  name: y
+  name: z
+}
+
+name: inferno_extinguish
+id: 160
+keys: {
+  name: entityid
+  name: x
+  name: y
+  name: z
+}
+
+name: decoy_firing
+id: 161
+keys: {
+  name: userid
+  name: entityid
+  name: x
+  name: y
+  name: z
+}
+
+name: bullet_impact
+id: 162
+keys: {
+  name: userid
+  name: x
+  name: y
+  name: z
+}
+
+name: player_footstep
+id: 163
+keys: {
+  name: userid
+}
+
+name: player_jump
+id: 164
+keys: {
+  name: userid
+}
+
+name: player_blind
+id: 165
+keys: {
+  name: userid
+}
+
+name: player_falldamage
+id: 166
+keys: {
+  name: userid
+  name: damage
+}
+
+name: door_moving
+id: 167
+keys: {
+  name: entindex
+  name: userid
+}
+
+name: round_freeze_end
+id: 168
+keys: {
+}
+
+name: mb_input_lock_success
+id: 169
+keys: {
+}
+
+name: mb_input_lock_cancel
+id: 170
+keys: {
+}
+
+name: nav_blocked
+id: 171
+keys: {
+  name: area
+  name: blocked
+}
+
+name: nav_generate
+id: 172
+keys: {
+}
+
+name: achievement_info_loaded
+id: 173
+keys: {
+}
+
+name: spec_target_updated
+id: 174
+keys: {
+  name: userid
+}
+
+name: spec_mode_updated
+id: 175
+keys: {
+  name: userid
+}
+
+name: hltv_changed_mode
+id: 176
+keys: {
+  name: oldmode
+  name: newmode
+  name: obs_target
+}
+
+name: cs_game_disconnected
+id: 177
+keys: {
+}
+
+name: cs_win_panel_round
+id: 178
+keys: {
+  name: show_timer_defend
+  name: show_timer_attack
+  name: timer_time
+  name: final_event
+  name: funfact_token
+  name: funfact_player
+  name: funfact_data1
+  name: funfact_data2
+  name: funfact_data3
+}
+
+name: cs_win_panel_match
+id: 179
+keys: {
+}
+
+name: cs_match_end_restart
+id: 180
+keys: {
+}
+
+name: cs_pre_restart
+id: 181
+keys: {
+}
+
+name: show_freezepanel
+id: 182
+keys: {
+  name: victim
+  name: killer
+  name: hits_taken
+  name: damage_taken
+  name: hits_given
+  name: damage_given
+}
+
+name: hide_freezepanel
+id: 183
+keys: {
+}
+
+name: freezecam_started
+id: 184
+keys: {
+}
+
+name: player_avenged_teammate
+id: 185
+keys: {
+  name: avenger_id
+  name: avenged_player_id
+}
+
+name: achievement_earned_local
+id: 186
+keys: {
+  name: achievement
+  name: splitscreenplayer
+}
+
+name: item_found
+id: 187
+keys: {
+  name: player
+  name: quality
+  name: method
+  name: itemdef
+  name: itemid
+}
+
+name: repost_xbox_achievements
+id: 188
+keys: {
+  name: splitscreenplayer
+}
+
+name: match_end_conditions
+id: 189
+keys: {
+  name: frags
+  name: max_rounds
+  name: win_rounds
+  name: time
+}
+
+name: round_mvp
+id: 190
+keys: {
+  name: userid
+  name: reason
+}
+
+name: client_disconnect
+id: 191
+keys: {
+}
+
+name: gg_player_levelup
+id: 192
+keys: {
+  name: userid
+  name: weaponrank
+  name: weaponname
+}
+
+name: ggtr_player_levelup
+id: 193
+keys: {
+  name: userid
+  name: weaponrank
+  name: weaponname
+}
+
+name: assassination_target_killed
+id: 194
+keys: {
+  name: target
+  name: killer
+}
+
+name: ggprogressive_player_levelup
+id: 195
+keys: {
+  name: userid
+  name: weaponrank
+  name: weaponname
+}
+
+name: gg_killed_enemy
+id: 196
+keys: {
+  name: victimid
+  name: attackerid
+  name: dominated
+  name: revenge
+  name: bonus
+}
+
+name: gg_final_weapon_achieved
+id: 197
+keys: {
+  name: playerid
+}
+
+name: gg_bonus_grenade_achieved
+id: 198
+keys: {
+  name: userid
+}
+
+name: switch_team
+id: 199
+keys: {
+  name: numPlayers
+  name: numSpectators
+  name: avg_rank
+  name: numTSlotsFree
+  name: numCTSlotsFree
+}
+
+name: gg_leader
+id: 200
+keys: {
+  name: playerid
+}
+
+name: gg_team_leader
+id: 201
+keys: {
+  name: playerid
+}
+
+name: gg_player_impending_upgrade
+id: 202
+keys: {
+  name: userid
+}
+
+name: write_profile_data
+id: 203
+keys: {
+}
+
+name: trial_time_expired
+id: 204
+keys: {
+  name: slot
+}
+
+name: update_matchmaking_stats
+id: 205
+keys: {
+}
+
+name: player_reset_vote
+id: 206
+keys: {
+  name: userid
+  name: vote
+}
+
+name: enable_restart_voting
+id: 207
+keys: {
+  name: enable
+}
+
+name: sfuievent
+id: 208
+keys: {
+  name: action
+  name: data
+  name: slot
+}
+
+name: start_vote
+id: 209
+keys: {
+  name: userid
+  name: type
+  name: vote_parameter
+}
+
+name: player_given_c4
+id: 210
+keys: {
+  name: userid
+}
+
+name: gg_reset_round_start_sounds
+id: 211
+keys: {
+  name: userid
+}
+
+name: tr_player_flashbanged
+id: 212
+keys: {
+  name: userid
+}
+
+name: tr_mark_complete
+id: 213
+keys: {
+  name: complete
+}
+
+name: tr_mark_best_time
+id: 214
+keys: {
+  name: time
+}
+
+name: tr_exit_hint_trigger
+id: 215
+keys: {
+}
+
+name: bot_takeover
+id: 216
+keys: {
+  name: userid
+  name: botid
+  name: index
+}
+
+name: tr_show_finish_msgbox
+id: 217
+keys: {
+  name: userid
+}
+
+name: tr_show_exit_msgbox
+id: 218
+keys: {
+  name: userid
+}
+
+name: reset_player_controls
+id: 219
+keys: {
+}
+
+name: jointeam_failed
+id: 220
+keys: {
+  name: userid
+  name: reason
+}
+
+name: teamchange_pending
+id: 221
+keys: {
+  name: userid
+  name: toteam
+}
+
+name: material_default_complete
+id: 222
+keys: {
+}
+
+name: cs_prev_next_spectator
+id: 223
+keys: {
+  name: next
+}
+
+name: nextlevel_changed
+id: 224
+keys: {
+  name: nextlevel
+}
+
+name: seasoncoin_levelup
+id: 225
+keys: {
+  name: player
+  name: category
+  name: rank
+}
+
+name: tournament_reward
+id: 226
+keys: {
+  name: defindex
+  name: totalrewards
+  name: accountid
+}
+
+name: start_halftime
+id: 227
+keys: {
+}
+
+name: hltv_status
+id: 228
+keys: {
+  name: clients
+  name: slots
+  name: proxies
+  name: master
+  name: externaltotal
+  name: externallinked
+}
+
+name: hltv_cameraman
+id: 229
+keys: {
+  name: index
+}
+
+name: hltv_rank_camera
+id: 230
+keys: {
+  name: index
+  name: rank
+  name: target
+}
+
+name: hltv_rank_entity
+id: 231
+keys: {
+  name: index
+  name: rank
+  name: target
+}
+
+name: hltv_fixed
+id: 232
+keys: {
+  name: posx
+  name: posy
+  name: posz
+  name: theta
+  name: phi
+  name: offset
+  name: fov
+  name: target
+}
+
+name: hltv_chase
+id: 233
+keys: {
+  name: target1
+  name: target2
+  name: distance
+  name: theta
+  name: phi
+  name: inertia
+  name: ineye
+}
+
+name: hltv_message
+id: 234
+keys: {
+  name: text
+}
+
+name: hltv_title
+id: 235
+keys: {
+  name: text
+}
+
+name: hltv_chat
+id: 236
+keys: {
+  name: text
+}
+
+name: hltv_changed_target
+id: 237
+keys: {
+  name: mode
+  name: old_target
+  name: obs_target
+}
+

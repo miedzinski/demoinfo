@@ -1,5 +1,7 @@
 import struct
 
+from collections import defaultdict
+
 from .proto.netmessages_pb2 import *
 from .proto.cstrike15_usermessages_pb2 import *
 
@@ -47,8 +49,9 @@ class DemoDump(object):
         svc_CmdKeyValues: [],
         svc_EncryptedData: [],
     }
+
     game_event_list = []
-    GAME_EVENTS = {}
+    GAME_EVENTS = defaultdict(list)
 
     def __init__(self, demo):
         self.demo = DemoFile(demo)
@@ -68,8 +71,6 @@ class DemoDump(object):
         self.SVC_MSG[msg].append(callback)
 
     def register_on_game_event(self, event, callback):
-        if event not in self.GAME_EVENTS:
-            raise DemoError('Game event not found')
         self.GAME_EVENTS[event].append(callback)
 
     def do_dump(self):
@@ -161,4 +162,5 @@ class DemoDump(object):
 
         for desc in game_event_list.descriptors:
             self.game_event_list.append((desc.name, desc.keys))
-            self.GAME_EVENTS[desc.name] = []
+            if desc.name not in self.GAME_EVENTS:
+                self.GAME_EVENTS[desc.name] = []
